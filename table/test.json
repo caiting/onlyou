@@ -1,0 +1,72 @@
+{
+  "code": 1000,
+  "msg": "success",
+  "data": [
+    {
+      "title": "jiankongbao-nancy",
+      "size": 6,
+      "children": [
+        {
+          "title": "ios 1.2.5",
+          "size": 3,
+          "children": [
+            {
+              "timestap": "12-12 00:00--12-12 10:39",
+              "avg_resp": 0,
+              "max_resp": 0,
+              "http_error": 0,
+              "net_error": 0,
+              "thread": 0
+            },
+            {
+              "timestap": "12-12 00:00--12-12 10:39",
+              "avg_resp": 0,
+              "max_resp": 0,
+              "http_error": 0,
+              "net_error": 0,
+              "thread": 0
+            },
+            {
+              "timestap": "12-12 00:00--12-12 10:39",
+              "avg_resp": 0,
+              "max_resp": 0,
+              "http_error": 0,
+              "net_error": 0,
+              "thread": 0
+            }
+          ]
+        },
+        {
+          "title": "ios 1.2.5",
+          "size": 3,
+          "children": [
+            {
+              "timestap": "12-12 00:00--12-12 10:39",
+              "avg_resp": 0,
+              "max_resp": 0,
+              "http_error": 0,
+              "net_error": 0,
+              "thread": 0
+            },
+            {
+              "timestap": "12-12 00:00--12-12 10:39",
+              "avg_resp": 0,
+              "max_resp": 0,
+              "http_error": 0,
+              "net_error": 0,
+              "thread": 0
+            },
+            {
+              "timestap": "12-12 00:00--12-12 10:39",
+              "avg_resp": 0,
+              "max_resp": 0,
+              "http_error": 0,
+              "net_error": 0,
+              "thread": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

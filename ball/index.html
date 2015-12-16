@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="renderer" content="webkit">
+    <title>ball</title>
+    <meta name="viewport" content="initial-scale=1.0,minimum-scale=1,maximum-scale=1,user-scalable=no">
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .bg {
+            width: 100%;
+        }
+
+        .ball {
+            width: 35.7%;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            margin-left: -17.5%;
+        }
+
+        .ball-content {
+            width: 23.3%;
+            height: 12.7%;
+            position: absolute;
+            top: 34.65%;
+            left: 56.1%;
+            margin-left: -17.5%;
+        }
+
+        .ball-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .transform {
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img class="bg" src="./bg.jpg" alt=""/>
+    <img class="ball" src="./ball.png" alt=""/>
+
+    <div class="ball-content">
+        <div class="ball-inner">
+        </div>
+    </div>
+</div>
+
+<script src="jquery.min.js"></script>
+<script>
+    $(function () {
+
+        $('.ball').animate({bottom: '52.4%', width: '23.3%', left: '56%'}, 600);
+
+
+        var content = $('.ball-content');
+        var per = 25;
+        var width = 277;
+        var diffW = content.width() / 4;
+        var diffH = content.height() / 4;
+
+        var clips = '';
+        for (var i = 0; i < 4; i++) {
+            for (var j = 0; j < 4; j++) {
+                clips += '<div class="transform" style="background:url(./ball.png) -' + diffW * i + 'px -' + diffH * j + 'px no-repeat;background-size:' + content.width() + 'px ' + content.height() + 'px;' +
+                        'position:absolute;left:' + per * i + '%;top:' + per * j + '%;' +
+                        'width: ' + per + '%;height:' + per + '%"></div>';
+            }
+        }
+        $('.ball-inner').append(clips);
+
+
+        function rand(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        $('.transform').each(function (tf, i) {
+            var randDeg = rand(-5, 10),
+                    randScale = rand(0.9, 1.1),
+                    randDeg2 = rand(30, 5);
+            $(this).css({'transform': 'scale(' + randScale + ') skew(' + randDeg + 'deg) rotateZ(' + randDeg2 + 'deg)'});
+
+
+            // So the speed is a random speed between 90m/s and 120m/s. I know that seems like a lot
+            // But otherwise it seems too slow. That's due to how I handled the timeout.
+            var v = rand(120, 90),
+                    angle = rand(80, 89), // The angle (the angle of projection) is a random number between 80 and 89 degrees.
+                    theta = (angle * Math.PI) / 180, // Theta is the angle in radians
+                    g = -9.8; // And gravity is -9.8. If you live on another planet feel free to change
+
+            var t = 0,
+                    z, r, nx, ny,
+                    totalt = 30;
+
+            // The direction can either be left (1), right (-1) or center (0). This is the horizontal direction.
+            var negate = [1, -1, 0],
+                    direction = negate[Math.floor(Math.random() * negate.length)];
+
+            var self = $(this);
+
+            var z = setInterval(function () {
+
+                // Horizontal speed is constant (no wind resistance on the internet)
+                var ux = ( Math.cos(theta) * v ) * direction;
+
+                // Vertical speed decreases as time increases before reaching 0 at its peak
+                var uy = ( Math.sin(theta) * v ) - ( (-g) * t);
+
+                // The horizontal position
+                nx = (ux * t);
+
+                // s = ut + 0.5at^2
+                ny = (uy * t) + (0.5 * (g) * Math.pow(t, 2));
+
+                // Apply the positions
+                self.css({'bottom': (ny) + 'px', 'left': (nx) + 'px'});
+
+                // Increase the time by 0.10
+                t = t + 0.10;
+
+                // If the time is greater than the total time clear the interval
+                if (t > totalt) {
+                    // Finally clear the interval
+                    clearInterval(z);
+
+                }
+
+            }, 4); // Run this interval every 10ms. Changing this will change the pace of the animation
+
+
+        });
+
+
+    });
+</script>
+
+</body>
+</html>

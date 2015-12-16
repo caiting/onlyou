@@ -1,6 +1,14 @@
 
 
 
+.form-control:focus {
+    border-color: transparent;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+
 .animated {
     -webkit-animation-duration: 1s;
     animation-duration: 1s;
