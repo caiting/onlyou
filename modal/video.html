@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<video id="video" width="640" height="480" autoplay></video>
+<button id="snap" class="sexyButton">Snap Photo</button>
+<canvas id="canvas" width="640" height="480"></canvas>
+
+<script>
+    // 添加事件监听器
+    window.addEventListener("DOMContentLoaded", function() {
+        // 获取元素，创建配置
+        var canvas = document.getElementById("canvas"),
+                context = canvas.getContext("2d"),
+                video = document.getElementById("video"),
+                videoObj = { "video": true },
+                errBack = function(error) {
+                    console.log("Video capture error: ", error.code);
+                };
+
+        // 添加视频监听器
+        if(navigator.getUserMedia) { // 标准的API
+            navigator.getUserMedia(videoObj, function(stream) {
+                video.src = stream;
+                video.play();
+            }, errBack);
+        } else if(navigator.webkitGetUserMedia) { // WebKit 核心的API
+            navigator.webkitGetUserMedia(videoObj, function(stream){
+                video.src = window.webkitURL.createObjectURL(stream);
+                video.play();
+            }, errBack);
+        }
+        document.getElementById("snap").addEventListener("click", function() {
+            context.drawImage(video, 0, 0, 640, 480);
+        });
+    }, false);
+</script>
+</body>
+</html>

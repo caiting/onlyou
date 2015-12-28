@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div id="videoElement" onclick="launchFullScreen(document.getElementById('videoElement'))">
+    <div style="width: 200px;height: 200px;background: #000;color: #fff;text-align: center; line-height: 200px">
+            全屏模式开启
+    </div>
+</div>
+
+
+<script>
+    // 根据目标元素调用相应的方法
+    function launchFullScreen(element) {
+        if(element.requestFullScreen) {
+            element.requestFullScreen();
+        } else if(element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+        } else if(element.webkitRequestFullScreen) {
+            element.webkitRequestFullScreen();
+        }
+    }
+
+    // 在支持的浏览器中启动全屏
+    launchFullScreen(document.documentElement); // 整个页面
+    launchFullScreen(document.getElementById("videoElement")); // 单个元素
+</script>
+</body>
+</html>

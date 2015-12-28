@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>遇见</title>
+    <link rel="stylesheet" href=""/>
+    <link rel="stylesheet" media="screen and(min-width:640px) and(max-width:980px)" href=""/>
+    <link rel="stylesheet" media="screen and(max-device-width:480px)" href=""/>
+
+    <!--[if Ite IE 9]>
+    <link rel="stylesheet" href=""/>
+    <script src=""></script>
+    <[endif]-->
+    <!--[if Ite IE 8]>
+    <link rel="stylesheet" href=""/>
+    <[endif]-->
+
+    <!--//纵向屏幕-->
+    <!--<link rel="stylesheet" media="all and(orientation:portrait)" href=""/>-->
+    <!--横向屏幕-->
+    <!--<link rel="stylesheet" media="all and(orientation:landscape)" href=""/>-->
+
+    <link rel="stylesheet" href="" media="only screen and (max-width:480px),only screen and (max-device-width:480px)"/>
+
+</head>
+<body>
+
+    <header class="header">
+        <div class="title">从头再来</div>
+        <div class="logo">
+
+
+        <nav class="header-nav">
+            <ul>
+                <li class="selected2">
+                    <a href="">欢迎使用</a>
+                </li>
+                <li>
+                    <a href="">免费下载</a>
+                </li>
+                <li><a href="">遇见</a></li>
+            </ul>
+        </nav>
+        </div>
+    </header>
+    <section class="followme">
+        <acticle>
+            <h1>yibu</h1>
+            <input type="text" placeholder="输入姓名" autocomplete="on"/>
+        </acticle>
+        <acticle>
+            <h1>yibu</h1>
+            <input type="range" min="0" max="100"/>
+
+
+        </acticle>
+        <acticle>
+            <h1>yibu</h1>
+            <input type="number" placeholder="输入姓名" autofocus />
+        </acticle>
+        <acticle>
+            <h1>yibu</h1>
+            <p>fyghjjk/lk;oipoopioh.ju</p>
+        </acticle>
+    </section>
+    <footer>
+        <nav>
+            <ul>
+                <li id="red">第一步</li>
+                <li class="blue-2">第二部</li>
+                <li>第三部</li>
+            </ul>
+        </nav>
+    </footer>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script>
+        navigator.geolocation.getCurrentPosition(function(pos){
+            console.log("当前地理位置的纬度："+pos.coords.latitude);
+            console.log("当前地理位置的精度："+pos.coords.longitude);
+            console.log("当前经纬度的精度："+pos.coords.accuracy);
+        });
+        var watchID = navigator.geolocation.watchPosition(function(pos){
+            console.log("当前地理位置的纬度："+pos.coords.latitude);
+            console.log("当前地理位置的精度："+pos.coords.longitude);
+            console.log("当前经纬度的精度："+pos.coords.accuracy);
+        },function(){
+
+                })
+
+    </script>
+</body>
+</html>
