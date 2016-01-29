@@ -5,10 +5,39 @@
     <title></title>
     <!--<link rel="stylesheet" href="css/bootstrap.css"/>-->
 </head>
+
+<body>
+
+<table style="width: 100%">
+    <thead>
+    <tr>
+        <th align="center">123</th>
+        <th align="left">123</th>
+        <th>123</th>
+        <th>123</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td align="center">456</td>
+        <td>456</td>
+        <td>456</td>
+        <td>456</td>
+    </tr>
+    <tr>
+        <td>456</td>
+        <td>456</td>
+        <td>456</td>
+        <td>456</td>
+    </tr>
+    </tbody>
+</table>
+
+
 <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-</div><body>
+</div>
 <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-3">
@@ -28,7 +57,30 @@
     <option value="">1</option>
 </select>
 </div>
+
+<div style="margin-top: 100px; clear: both"></div>
+<div role="radio" aria-checked="true" aria-label="单选2" tabindex="0">单选</div>
+
+<span class="text-box">
+  See the square next to me?
+</span>
+
+
+
 <style>
+    .text-box:after{
+        content: "";
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        background-color: red;
+    }
+    .text-box > .square {
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        background-color: red;
+    }
     .col-md-3{
         width:33.3333%;
         float: left;

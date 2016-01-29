@@ -1,0 +1,32 @@
+{
+  "name": "tsb",
+  "description": "",
+  "main": "less/bootstrap.less",
+  "authors": [
+    "jenny"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "性能测试",
+    "压力测试",
+    "分布式测试",
+    "负载测试",
+    "全链路压测",
+    "云测试"
+  ],
+  "homepage": "https://github.com/caiting/onlyou",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.0",
+    "html5shiv": "~3.7.3",
+    "respond": "~1.4.2",
+    "normalize-css": "normalize.css#~3.0.3"
+  }
+}

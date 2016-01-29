@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="list"></div>
+<script src="js/jquery.min.js"></script>
+<script>
+    console.time('class');
+    var list = $('#list');
+    var items = '';
+    for (i=0; i<1000; i++) {
+        items += 'item';
+    }
+    items += '';
+    list.html (items);
+    for (i=0; i<1000; i++) {
+        var s = $('.item' + i);
+    }
+    console.timeEnd('class');
+    //然后利用ID选择
+    console.time('id');
+    var list = $('#list');
+    var items = '';
+    for (i=0; i<1000; i++) {
+        items += 'item';
+    }
+    items += '';
+    list.html (items);
+    for (i=0; i<1000; i++) {
+        var s = $('#item' + i);
+    }
+    console.timeEnd('id');
+</script>
+</body>
+</html>
