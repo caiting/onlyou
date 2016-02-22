@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content=""/>
+
+    <title>云智慧</title>
+    <link rel="stylesheet" href="css/normalize.css"/>
+    <link rel="stylesheet" href="css/yunzhihui.css"/>
+</head>
+<body>
+
+<div class="title">
+    <img src="img/logo.png" alt="" width="100"/>
+
+    <div class="right">
+        <a href="" class="btn-border Popup" id="user">管理用户</a>
+        <a href="" class="btn-border Popup" id="modal">添加用户</a>
+    </div>
+</div>
+<div class="list">
+    <div class="filter">
+        <label>分类：</label>
+        <a class="active" href="">全部（<span>200</span>）</a>
+        <a href="">环境（<span>50</span>）</a>
+        <a href="">工资（<span>50</span>）</a>
+        <a href="">环境（<span>50</span>）</a>
+        <a href="">工资（<span>50</span>）</a>
+        <a href="" class="Popup" id="add">添加分类</a>
+
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <td width="10%">序号</td>
+            <td width="90%">意见</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>1</td>
+            <td>及上档次的看完没v</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>及上档次的看完没v</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>及上档次的看完没v</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>及上档次的看完没v</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade animated" id="modal1">
+    <div class="close disappear">&times;</div>
+    <div class="modal-content">
+        <div class="title-modal">
+            <h4>添加用户</h4>
+        </div>
+        <div class="modal-main">
+            <div class="group clearfix">
+                <label for="">账户：</label>
+                <div class="input">
+                    <input type="text"/>
+                </div>
+            </div>
+            <div class="filter group">
+                <label>权限：</label>
+                <a class="active" href="">管理员</a>
+                <a href="">普通用户</a>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="" class="btn-defult disappear">取消</a>
+            <a href="" class="btn-primary">保存</a>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade animated" id="user1">
+    <div class="close disappear">&times;</div>
+    <div class="modal-content">
+        <div class="title-modal">
+            <h4>管理用户</h4>
+        </div>
+        <div class="modal-main">
+            <table class="table">
+                <thead>
+                <tr>
+                    <td width="30%">账户</td>
+                    <td width="20%">操作</td>
+                    <td width="50">权限设置</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>olive</td>
+                    <td><a href="">&times;</a></td>
+                    <td>
+                        <div class="filter sm group">
+                            <a class="active" href="">管理员</a>
+                            <a href="">普通用户</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>olive</td>
+                    <td><a href="">&times;</a></td>
+                    <td>
+                        <div class="filter sm group">
+                            <a class="active" href="">管理员</a>
+                            <a href="">普通用户</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>olive</td>
+                    <td><a href="">&times;</a></td>
+                    <td>
+                        <div class="filter sm group">
+                            <a class="active" href="">管理员</a>
+                            <a href="">普通用户</a>
+                        </div>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <a href="" class="btn-defult disappear">取消</a>
+            <a href="" class="btn-primary">保存</a>
+        </div>
+    </div>
+</div>
+<div class="modal fade animated" id="add1">
+    <div class="close disappear">&times;</div>
+    <div class="modal-content">
+        <div class="title-modal">
+            <h4>添加分类</h4>
+        </div>
+        <div class="modal-main">
+            <div class="group clearfix">
+                <label for="">名称：</label>
+                <div class="input">
+                    <input type="text"/>
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <a href="" class="btn-defult disappear">取消</a>
+            <a href="" class="btn-primary">添加</a>
+        </div>
+    </div>
+</div>
+<div class="bg-black"></div>
+<script src="js/jquery.min.js"></script>
+<script>
+    $(function(){
+        $('.Popup').click(function(e){
+            var c=$(this).attr('id');
+            var f=c+1;
+            $('.bg-black').show();
+            $('#'+f).removeClass('fadeOut').addClass('fadeIn').show();
+            e.preventDefault();
+        })
+        $('.disappear').click(function(){
+            $('.bg-black').hide();
+            $('.modal').addClass('fadeOut').removeClass('fadeIn').hide();
+            e.preventDefault();
+        })
+    })
+</script>
+
+</body>
+</html>

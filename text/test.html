@@ -5,6 +5,28 @@
     <title></title>
 </head>
 <body>
+
+<div id="name1" style="border:1px solid red;padding:10px 10px 10px 10px;" style="border:1px solid red;padding:10px 10px 10px 10px;">
+    <div id="name2" style="border:1px solid green;padding:10px 10px 10px 10px;" style="border:1px solid green;padding:10px 10px 10px 10px;">点击</div>
+</div>
+<div id="info"></div>
+<script type="text/javascript"><!--
+var name1=document.getElementById('name1'); //要注意
+var name2=document.getElementById('name2'); //要注意
+var info=document.getElementById('info');
+if(name1.attachEvent){ //对于attachEvent前面的target我们一定要保证不为空
+    name1.attachEvent('onclick',function () { info.innerHTML += "红色" + "<br>"; });
+    name2.attachEvent('onclick',function () { info.innerHTML += "绿色" + "<br>"; });
+}else{
+    name1.addEventListener('click',function () { info.innerHTML += "红色" + "<br>"; },false);
+    name2.addEventListener('click',function () { info.innerHTML += "绿色" + "<br>"; },false);
+}
+// --></script>
+
+
+
+
+
 <div id="list"></div>
 <script src="js/jquery.min.js"></script>
 <script>

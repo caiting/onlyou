@@ -23,5 +23,6 @@
     "imagemin-pngquant": "^4.2.0",
     "merge-stream": "^1.0.0",
     "require-dir": "^0.3.0"
+
   }
 }
