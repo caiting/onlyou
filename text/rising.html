@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/add.css"/>
+</head>
+<body>
+<div class="gray-bg" id="page-wrapper">
+    <div class="row border-bottom">
+        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+
+                <form role="search" class="navbar-form-custom" action="search_results.html">
+                    <div class="form-group">
+                        <input type="text" placeholder="Search for something..." class="form-control" name="top-search"
+                               id="top-search">
+                    </div>
+                </form>
+            </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
+                </li>
+
+
+                <li>
+                    <a href="login.html">
+                        <i class="fa fa-sign-out"></i> Log out
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+    </div>
+
+    <div class="row m-t-lg">
+        <div class="col-lg-6">
+            <div class="tabs-container">
+
+                <div class="tabs-left">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-1">基础</a></li>
+                        <li class=""><a data-toggle="tab" href="#tab-2">背景色</a></li>
+                        <li class=""><a data-toggle="tab" href="#tab-3">前景色</a></li>
+                        <li class=""><a data-toggle="tab" href="#tab-4">X轴</a></li>
+                        <li class=""><a data-toggle="tab" href="#tab-5">Y轴</a></li>
+                        <li class=""><a data-toggle="tab" href="#tab-6">文字颜色</a></li>
+                        <li class=""><a data-toggle="tab" href="#tab-7">图例</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane active">
+                            <div class="panel-body">
+                                <form class="form-horizontal">
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 control-label">
+                                            <input type="checkbox" checked/>
+                                            坐标轴位置：</label>
+                                        <div class="col-lg-8">
+                                            <button class="btn btn-default btn-xs">居左</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 control-label">
+                                            <input type="checkbox" checked/>
+                                            坐标轴名称：</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" class="form-control input-sm"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 control-label">
+                                            <input type="checkbox"/>
+                                            文字颜色：</label>
+                                        <div class="col-lg-8">
+                                            <input type="color"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 control-label">
+                                            <input type="checkbox"/>
+                                            文字大小：</label>
+                                        <div class="col-lg-8">
+                                            <input type="range"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 control-label">
+                                            <input type="checkbox"/>
+                                            字体样式：</label>
+                                        <div class="col-lg-8">
+                                            <button class="btn btn-default btn-xs">普通</button>
+                                            <button class="btn btn-default btn-xs">加粗</button>
+                                            <button class="btn btn-default btn-xs">斜体</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-4 control-label">
+                                            <input type="checkbox"/>
+                                            字体粗细：</label>
+                                        <div class="col-lg-8">
+                                            <button class="btn btn-default btn-xs">普通</button>
+                                            <button class="btn btn-default btn-xs">加粗</button>
+                                            <button class="btn btn-default btn-xs">变细</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-6 control-label">
+                                            <input type="checkbox"/>
+                                            文字水平对齐方式：</label>
+                                        <div class="col-lg-6">
+                                            <button class="btn btn-default btn-xs">居左</button>
+                                            <button class="btn btn-default btn-xs">居中</button>
+                                            <button class="btn btn-default btn-xs">居右</button>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-6 control-label">
+                                            <input type="checkbox"/>
+                                            文字水平垂直方式：</label>
+                                        <div class="col-lg-6">
+                                            <button class="btn btn-default btn-xs">居左</button>
+                                            <button class="btn btn-default btn-xs">居中</button>
+                                            <button class="btn btn-default btn-xs">居右</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="tab-2" class="tab-pane">
+                            <div class="panel-body">
+                                2
+                            </div>
+                        </div>
+                        <div id="tab-3" class="tab-pane">
+                            <div class="panel-body">
+                                3
+                            </div>
+                        </div>
+                        <div id="tab-4" class="tab-pane">
+                            <div class="panel-body">
+                                4
+                            </div>
+                        </div>
+                        <div id="tab-5" class="tab-pane">
+                            <div class="panel-body">
+                                5
+                            </div>
+                        </div>
+                        <div id="tab-6" class="tab-pane">
+                            <div class="panel-body">
+                                6
+                            </div>
+                        </div>
+                        <div id="tab-7" class="tab-pane">
+                            <div class="panel-body">
+                                7
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="col-lg-6">
+
+        </div>
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    $(function(){
+
+        $("form.form-horizontal").find('button,input:not([type=checkbox])').prop("disabled", true);
+
+        var checks =$('.control-label>input[type="checkbox"]');
+
+        checks.each(function(){
+            var checked = $(this).prop('checked');
+            $(checked).parent().siblings().find('button,input').prop("disabled", false)
+            $('input[type="checkbox"]').click(function(){
+                if(checked){
+                    $(this).parent().siblings().find('button,input').prop("disabled", false)
+                }
+            })
+
+        });
+
+    })
+</script>
+
+</body>
+</html>

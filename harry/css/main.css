@@ -1,0 +1,28 @@
+.left-main{
+    width: 170px;
+    background-color: #f7f7f7;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+    top:52px;
+}
+.navbar{
+    margin-bottom: 0;
+}
+.left-main .nav li a{
+    color: #777;
+    text-align: center;
+}
+.img-head{
+    margin-top: 5px;
+    width: 200px;
+    display: block;
+    text-align: center;
+}
+.main-contain {
+    margin-left: 170px;
+    padding: 15px;
+}
+.num1{
+    padding: 15px;
+}

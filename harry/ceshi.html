@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+
+<style>
+    /*div { margin:3px; width:40px; height:40px;*/
+        /*position:absolute; left:0px; top:30px;*/
+        /*background:green; display:none; }*/
+    div.newcolor { background:blue; }
+    p{
+        border: 1px solid #eaeaea;
+        padding:10px;
+    }
+</style>
+
+<button id="start">Start</button>
+<button id="stop">Stop</button>
+<div></div><div></div>
+<p>kjdnf</p>
+<p>heidou</p>
+<p><b>Values: </b></p>
+<form>
+    <input type="text" name="name" value="John"/>
+    <input type="text" name="password" class="test" value="password"/>
+    <input type="text" name="url" value="http://ejohn.org/"/>
+</form>
+
+<script src="js/jquery.min.js"></script>
+<script>
+//    $('p').wrap(function(){
+//        return '<div class="'+$(this).text()+'"/>';
+//    });
+
+
+
+//    $('p').unwrap();
+
+
+//    $("</p>")
+//            .appendTo("div")
+//            .addClass("test")
+//            .end()
+//            .addClass("test2");
+
+
+//    var p = $("p").innerHeight();
+//    console.log(p);
+//
+//    $("p").append("<div>hh</div>");
+//    $("p").innerHeight();
+//    42
+//    $("p").outerHeight();
+//    44
+//    $("p").height();
+//    22
+
+
+
+//   var g= $("p").height(function(n,c){return c+10;});
+//   var c= $("p").height();
+//    console.log(c);
+//    $("p").offset({left:10,top:30});
+//    var p = $("p:last");
+//    var offset = p.offset();
+//    $("p").html("left:"+offset.left+"top:"+offset.top);
+
+
+    (function($) {
+        function styleSupport( prop ) {
+            var vendorProp, supportedProp,
+            // capitalize first character of the prop to test vendor prefix
+                    capProp = prop.charAt(0).toUpperCase() + prop.slice(1),
+                    prefixes = [ "Moz", "Webkit", "O", "ms" ],
+                    div = document.createElement( "div" );
+            if ( prop in div.style ) {
+                // browser supports standard CSS property name
+                supportedProp = prop;
+            } else {
+                // otherwise test support for vendor-prefixed property names
+                for ( var i = 0; i < prefixes.length; i++ ) {
+                    vendorProp = prefixes[i] + capProp;
+                    if ( vendorProp in div.style ) {
+                        supportedProp = vendorProp;
+                        break;
+                    }
+                }
+            }
+            // avoid memory leak in IE
+            div = null;
+            // add property to $.support so it can be accessed elsewhere
+            $.support[ prop ] = supportedProp;
+            return supportedProp;
+        }
+        // call the function, e.g. testing for "border-radius" support:
+        styleSupport( "borderRadius" );
+    })(jQuery);
+
+//    $("#start").click(function () {
+//        $("div").show("slow");
+//        $("div").animate({left:'+=200'},5000);
+//        $("div").queue(function () {
+//            $(this).addClass("newcolor");
+//            $(this).dequeue();
+//        });
+//        $("div").animate({left:'-=200'},1500);
+//        $("div").queue(function () {
+//            $(this).removeClass("newcolor");
+//            $(this).dequeue();
+//        });
+//        $("div").slideUp();
+//    });
+//    $("#stop").click(function () {
+//        $("div").queue("fx", []);
+//        $("div").stop();
+//    });
+
+
+
+
+
+
+    $("#show").click(function () {
+        var n = $("div").queue("fx");
+        $("span").text("Queue length is: " + n.length);
+    });
+//    function runIt() {
+//        $("div").show("slow");
+//        $("div").animate({left:'+=200'},2000);
+//        $("div").slideToggle(1000);
+//        $("div").slideToggle("fast");
+//        $("div").animate({left:'-=200'},1500);
+//        $("div").hide("slow");
+//        $("div").show(1200);
+//        $("div").slideUp("normal", runIt);
+//    }
+//    runIt();
+
+
+
+    $("#nav a").click(function(){
+
+//四个经典的用法
+        var index1 = $("#nav a").index(this);
+        var index2 = $("#nav a").index($(this));
+        var index4 = $(this).index()
+        var index3 = $(this).index("a")
+        alert(index3);
+        return false;
+    });
+
+    $("ul")
+            .append("<li>" + $("ul").context + "</li>")
+            .append("<li>" + $("ul", document.body).context.nodeName + "</li>");
+
+    $("ul")
+            .append("<li>" + $("ul").selector + "</li>")
+            .append("<li>" + $("ul li").selector + "</li>")
+            .append("<li>" + $("div#foo ul:not([class])").selector + "</li>");
+
+    $('img').each(function (i) {
+        this.src = "logo" + i + ".png";
+    });
+
+    $('button').click(function (e) {
+        e.preventDefault();
+        $('div').each(function (index) {
+            console.log(index);
+            $(this).css('background', 'red');
+            if ($(this).is("#stop")) {
+                $("span").text('stop at div' + index);
+                return false;
+            }
+        })
+    })
+
+//    $('<div>', {
+//        class: 'test',
+//        text: 'click me!',
+//        click: function () {
+//            $(this).toggleClass('test')
+//        }
+//    }).appendTo('body');
+
+    $('<input>', {
+        type: 'text',
+        val: 'Text',
+        focusin: function () {
+            $(this).addClass('active')
+        },
+        focusout: function () {
+            $(this).removeClass('active')
+        }
+    }).appendTo('body')
+
+
+    var message = "left";
+    $("a").bind("click", {msg: message}, function (e) {
+        alert(e.data.msg);
+        return false;
+    });
+    var message = "right";
+    $("a").bind("contextmenu", {msg: message}, function (e) {
+        alert(e.data.msg);
+        return false;
+    });
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

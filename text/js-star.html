@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="a"></div>
+<div id="num">3</div>
+<script src="js/jquery.min.js"></script>
+<script>
+    function jLoad(id,url,fn){
+        $.ajax({
+            url: url,
+            dataType: 'json',
+            success: function(result){
+                console.log(result);
+                var a=result.name;
+                id.append(a);
+
+                if(fn != undefined){
+                    fn(result);
+                }
+            }
+        });
+    }
+
+
+
+    jLoad($('#a'),'../toushibao/package.json');
+
+
+    $(document).ready(function() {
+        function jump(count) {
+            window.setTimeout(function(){
+                count--;
+                if(count > 0) {
+                    $('#num').html(count);
+                    jump(count);
+                } else {
+                    location.href="http://jb51.net";
+                }
+            }, 1000);
+        }
+        jump(3);
+    });
+
+    $(document).ready(function(){
+        function jump(count){
+            window.setTimeout(function(){
+                count--;
+                if(count>0){
+                    $('#num').html(count);
+                    jump(count);
+                }else{
+                    location.href='http://baidu.com'
+                }
+            },1000)
+        }
+        jump(3)
+    })
+</script>
+
+</body>
+</html>

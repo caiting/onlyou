@@ -1,0 +1,7 @@
+.form-horizontal .form-group{
+    overflow: auto;
+}
+.form-horizontal .control-label{
+    text-align: left;
+    padding-top: 3px;
+}

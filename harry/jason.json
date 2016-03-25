@@ -1,0 +1,24 @@
+{
+  "name": "tsb",
+  "version": "0.0.1",
+  "description": "",
+  "email":"jenny.pei@yunzhihui.com",
+  "password":"123456",
+  "main": "less/bootstrap.less",
+  "scripts": {},
+  "radio":"nv",
+  "checkbox":{
+    "check1":"1",
+    "check2":"2",
+    "check3":"3"
+  },
+  "keywords": [
+    ""
+  ],
+  "author": "jenny",
+  "dependencies": {},
+  "devDependencies": {
+
+
+  }
+}

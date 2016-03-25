@@ -1,0 +1,23 @@
+.apply_list>.row>.col-md-1{
+    padding-right: 0px;
+    padding-left: 0;
+    line-height: 45px;
+    text-align: center;
+}
+.apply_list>.row>.col-md-2{
+    padding-right: 0;
+    padding-left: 15px;
+}
+.apply_list>.row>.col-md-2>.bgcolor-gray,.apply_list>.row>.col-md-1>.bgcolor-gray{
+    padding: 10px;
+}
+.apply_list>.row>.col-md-1>.bgcolor-gray>.text-success{
+    color: #82be00;
+}
+.apply_list>.row>.col-md-2>.bgcolor-gray span{
+    font-size: 18px;
+}
+.apply_list>.row{
+    margin-left: 0;
+    margin-right: 0;
+}

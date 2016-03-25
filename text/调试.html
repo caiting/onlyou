@@ -7,125 +7,77 @@
 </head>
 
 <body>
+<button>huhu</button>
 
-<table style="width: 100%">
-    <thead>
-    <tr>
-        <th align="center">123</th>
-        <th align="left">123</th>
-        <th>123</th>
-        <th>123</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td align="center">456</td>
-        <td>456</td>
-        <td>456</td>
-        <td>456</td>
-    </tr>
-    <tr>
-        <td>456</td>
-        <td>456</td>
-        <td>456</td>
-        <td>456</td>
-    </tr>
-    </tbody>
-</table>
+<div style="height: 20px;width: 20px;position: absolute;left: 0; background-color: yellowgreen;"></div>
 
-
-<div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-</div>
-<div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-3">
-        <select name="" class="form-control">
-            <option value="">232432</option>
-            <option value="">232432</option>
-            <option value="">232432</option>
-            <option value="">232432</option>
-        </select>
-    </div>
-</div>
-<div class="col-md-3">
-<select name="" id="" class="form-control">
-    <option value="">1</option>
-    <option value="">1</option>
-    <option value="">1</option>
-    <option value="">1</option>
-</select>
-</div>
-
-<div style="margin-top: 100px; clear: both"></div>
-<div role="radio" aria-checked="true" aria-label="单选2" tabindex="0">单选</div>
-
-<span class="text-box">
-  See the square next to me?
-</span>
-
-
-
-<style>
-    .text-box:after{
-        content: "";
-        display: inline-block;
-        width: 1rem;
-        height: 1rem;
-        background-color: red;
-    }
-    .text-box > .square {
-        display: inline-block;
-        width: 1rem;
-        height: 1rem;
-        background-color: red;
-    }
-    .col-md-3{
-        width:33.3333%;
-        float: left;
-    }
-    select:focus {
-        border-color: transparent;
-        outline: inherit;
-        -webkit-box-shadow: none;
-        box-shadow: none;
-    }
-    input:focus{
-        border-color: inherit;
-        -webkit-box-shadow: none;
-        box-shadow: none;
-        outline:inherit;
-        outline-offset: 0px
-    }
-    input[type="submit"],
-    input[type="reset"],
-    input[type="button"],
-    input,
-    select,
-    button { -webkit-appearance: none;
-        }
-
-    .form-control {
-        display: block;
-        width: 100%;
-        height: 34px;
-        padding: 6px 12px;
-        font-size: 14px;
-        line-height: 1.42857143;
-        color: #555;
-        background-color: #fff;
-        background-image: none;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-        box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-        -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-        -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-    }
-
-</style>
 
 </body>
+
+<script src="js/jquery.min.js"></script>
+<script>
+
+    $("button").click(function () {
+        $("div").animate({left:'+=200px'}, 2000);
+        $("div").animate({top:'0px'}, 600);
+        $("div").queue(function () {
+            $(this).toggleClass("red");
+            $(this).clearQueue();
+        });
+        $("div").animate({left:'10px', top:'30px'}, 700);
+    });
+
+
+    $("div").click(function() {
+        $(this).css({
+            width: function(index, value) {
+                return parseFloat(value) * 1.2;
+            },
+            height: function(index, value) {
+                return parseFloat(value) * 1.2;
+            }
+        });
+    });
+
+
+
+jQuery.fn.extend({
+    check:function(){
+        return this.each(function(){
+            this.checked = 'checked';
+        })
+    }
+
+});
+$('input:checkbox').check();
+jQuery.extend({
+    min:function(a,b){
+        return a < b ? a:b;
+    },
+    max:function(a,b){
+        return a > b ? a:b;
+    }
+});
+jQuery.min(2,3);
+
+
+
+//    function jLoad(id,url,fn){
+//        $.ajax({
+//            url:url,
+//            dataType:'html',
+//            success: function(result){
+//
+//                id.append(result);
+//
+//                if(fn != undefined){
+//                    fn(result);
+//                }
+//
+//            }
+//
+//        })
+//    }
+//    jLoad($('#a'),'test.html');
+</script>
 </html>
