@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
+
+</head>
+<title>北京电信IDC客户全国感知监控</title>
+
+<body>
+    <img  class="absolute_left" src="left_bg.png" alt=""/>
+    <img  class="absolute_right" src="right_bg.png" alt=""/>
+<div class="row data_map">
+    <div class="col-md-12 text-center">
+
+        <div class="title-bg">北京电信IDC客户全国感知监控</div>
+    </div>
+    <div class="col-md-8" style="height: 600px;
+    ">
+        <div id="back" class="back">
+            <div class="zindex">&gt; 返回</div>
+        </div>
+        <div class="posi-data">
+            siucijoe
+        </div>
+        <div id="main"></div>
+    </div>
+    <div class="col-md-4" style="padding-top: 40px;">
+        <div class="before">
+            <div class="Bpage">
+                <div class="zindex">
+                    <span>监测点数据（共<lebal id='all_sum'>200</lebal>个）</span>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;延时 <span class="icon_delay"></span> 丢包率 <span
+                class="icon_mispak"></span></span>
+                </div>
+            </div>
+        </div>
+
+        <!--data-ride="carousel"-->
+        <div class="before">
+            <div id="carousel-example-generic" class="carousel slide">
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <div class="row">
+                            <div class="col-md-5 name_yun">新疆电信新疆</div>
+                            <div class="col-md-7 new_progressbar font_size_12">
+                                <div class="text-bule">
+                                    <div class="blue-data">
+                                        <div class="bule-radius" style="width: 100%;"></div>
+                                    </div>
+                                    <span>33.4445ms</span>
+                                </div>
+                                <div class="text-zi">
+                                    <div class="blue-data">
+                                        <div class="green-radius" style="width: 30%;"></div>
+                                    </div>
+                                    <span>30%</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/echarts.js"></script>
+<script>
+
+    // 路径配置
+    require.config({
+        paths: {
+            echarts: 'js'
+        }
+    });
+
+    // 使用
+    require(
+            [
+                'echarts',
+                'echarts/chart/map',
+            ],
+            function (ec) {
+                var myChart = ec.init(document.getElementById('main'));
+
+                var geoJs = {
+                    '密云县': 'miyun',
+                    '怀柔区': 'huairou',
+                    '房山区': 'fangshan',
+                    '延庆县': 'yanqing',
+                    '门头沟区': 'mentougou',
+                    '昌平区': 'changping',
+                    '大兴区': 'daxing',
+                    '顺义区': 'shunyi',
+                    '平谷区': 'pinggu',
+                    '通州区': 'tongzhou',
+                    '朝阳区': 'chaoyang',
+                    '海淀区': 'haidian',
+                    '丰台区': 'fengtai',
+                    '石景山区': 'shijingshan',
+                    '西城区': 'xicheng',
+                    '东城区': 'dongcheng',
+                    '宣武区': 'xuanwu',
+                    '崇文区': 'chongwen'
+                };
+                for (var key in geoJs) {
+
+                    (function (name) {
+                        require('echarts/util/mapData/params').params[name] = {
+                            getGeoJson: function (callback) {
+                                require(['js/mapdata/' + geoJs[name]], function (md) {
+                                    callback(md);
+                                });
+                            }
+                        };
+                    }(key));
+                }
+
+                var ecConfig = require('echarts/config');
+                myChart.on(ecConfig.EVENT.CLICK, function (param) {
+                    try {
+                        option.series[0].mapType = param.name;
+                        myChart.setOption(option, true);
+                        document.getElementById('back').style.display = 'block';
+                    } catch (e) {
+//                        console.log('map geo is null!')
+                    }
+                });
+
+                option = {
+
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: '{b}<br/> 北京',
+                        opacity: 0.3,
+                        backgroundColor: 'rgba(255,255,255,0.2)',
+                        padding: 2
+                    },
+                    dataRange: {
+                        splitList: [{
+                            start: 100.001,
+                            label: '故障'
+                        }, {
+                            start: 50,
+                            end: 100,
+                            label: '异常'
+                        }, {
+                            end: 49.999,
+                            label: '正常'
+                        }],
+                        color: ['#ff3333', 'orange', 'lime'],
+                        textStyle: {
+                            color: '#fff'
+                        }
+                    },
+                    series: [
+                        {
+                            name: '北京电信小区',
+                            type: 'map',
+                            mapType: '北京',
+                            mapLocation: {
+//                                height: 600
+                            },
+//                            selectedMode: 'single',
+                            itemStyle: {
+                                normal: {
+                                    label: {
+                                        show: false
+                                    },
+                                    borderColor: '#02a9c6',
+                                    borderWidth: 2,
+                                    areaStyle: {
+                                        color: '#010e1e'
+                                    }
+                                },
+                                emphasis: {
+                                    label: {
+                                        show: false,
+                                        textStyle: {
+                                            color: '#fff'
+                                        }
+                                    },
+                                    color: 'transparent'
+                                }
+                            },
+                            data: [],
+                            geoCoord: {
+                                '马家堡西里小区': [116.4551, 40.5539],
+                                '云智慧小区': [116.3551, 40.7539],
+                                '监控宝小区': [116.7551, 40.1539],
+                                '透视宝小区': [116.9551, 40.3539],
+                                '小区A001': [115.9551, 40.5539],
+                                '小区A002': [115.9551, 39.6139],
+                                '小区A003': [116.1751, 39.6139],
+                                '小区A004': [116.1751, 40.5539],
+                                '小区B001': [116.2451, 40.7539],
+                                '小区B002': [116.2451, 39.6439],
+                                '小区B003': [116.7551, 39.6439],
+                                '小区B004': [116.7551, 40.7539],
+                                '小区C001': [116.7951, 40.6939],
+                                '小区C002': [116.7951, 40.1039],
+                                '小区C003': [117.1851, 40.6939],
+                                '小区C004': [117.1851, 40.1039],
+                                '小区1': [115.9784, 39.7541],
+                                '小区2': [116.0972, 39.6871],
+                                '小区3': [116.0458, 39.9636],
+                                '小区4': [116.0224, 40.3676],
+                                '小区5': [116.0426, 40.3613],
+                                '小区6': [115.9954, 39.8311],
+                                '小区7': [116.0398, 39.9312],
+                                '小区8': [116.0914, 39.7884],
+                                '小区9': [116.1612, 40.4572],
+                                '小区10': [116.1413, 39.9428],
+                                '小区11': [115.961, 40.0194],
+                                '小区12': [116.0049, 40.038],
+                                '小区13': [116.1521, 40.2568],
+                                '小区14': [115.9935, 40.4675],
+                                '小区15': [116.1733, 40.2813],
+                                '小区16': [116.0549, 39.9782],
+                                '小区17': [116.0574, 39.8562],
+                                '小区18': [116.1053, 39.855],
+                                '小区19': [115.9884, 40.5359],
+                                '小区20': [116.0039, 40.4695],
+                                '小区21': [116.1539, 40.1815],
+                                '小区22': [116.0957, 39.6582],
+                                '小区23': [116.0709, 39.9387],
+                                '小区24': [116.0323, 39.8284],
+                                '小区25': [116.0885, 39.9276],
+                                '小区26': [116.0614, 40.3653],
+                                '小区27': [116.0127, 39.7156],
+                                '小区28': [116.0179, 39.7355],
+                                '小区29': [116.0926, 39.6694],
+                                '小区30': [116.0618, 40.1764],
+                                '小区31': [116.1249, 39.7317],
+                                '小区32': [116.1632, 39.9477],
+                                '小区33': [116.0014, 39.7943],
+                                '小区34': [115.9736, 39.697],
+                                '小区35': [116.0038, 40.2605],
+                                '小区36': [116.0608, 39.645],
+                                '小区37': [115.966, 39.731],
+                                '小区38': [116.0214, 39.7063],
+                                '小区39': [116.0973, 40.4601],
+                                '小区40': [115.9853, 40.3084],
+                                '小区41': [115.9997, 39.8794],
+                                '小区42': [115.9822, 40.4277],
+                                '小区43': [115.9552, 40.2882],
+                                '小区44': [115.9928, 40.0442],
+                                '小区45': [116.0599, 39.8061],
+                                '小区46': [116.1525, 39.6633],
+                                '小区47': [116.1592, 39.7953],
+                                '小区48': [115.9719, 40.382],
+                                '小区49': [115.9816, 39.9461],
+                                '小区50': [116.0482, 39.6794],
+                                '小区B1': [116.7172, 40.5593],
+                                '小区B2': [116.3174, 40.2935],
+                                '小区B3': [116.5523, 40.6585],
+                                '小区B4': [116.2827, 40.7044],
+                                '小区B5': [116.2763, 40.7116],
+                                '小区B6': [116.6114, 40.4912],
+                                '小区B7': [116.6603, 39.9341],
+                                '小区B8': [116.6896, 40.7204],
+                                '小区B9': [116.686, 40.5847],
+                                '小区B10': [116.7083, 39.6635],
+                                '小区B11': [116.5343, 40.3367],
+                                '小区B12': [116.5732, 39.8385],
+                                '小区B13': [116.387, 40.7017],
+                                '小区B14': [116.6828, 39.7479],
+                                '小区B15': [116.2526, 39.8954],
+                                '小区B16': [116.4628, 39.8858],
+                                '小区B17': [116.2547, 39.764],
+                                '小区B18': [116.7324, 40.5339],
+                                '小区B19': [116.6704, 40.2192],
+                                '小区B20': [116.3419, 40.1841],
+                                '小区B21': [116.5599, 40.3565],
+                                '小区B22': [116.471, 40.2739],
+                                '小区B23': [116.3346, 40.324],
+                                '小区B24': [116.651, 40.324],
+                                '小区B25': [116.5856, 40.5023],
+                                '小区B26': [116.7045, 40.6695],
+                                '小区B27': [116.4277, 40.3532],
+                                '小区B28': [116.6741, 40.2734],
+                                '小区B29': [116.5379, 40.6003],
+                                '小区B30': [116.7237, 39.7628],
+                                '小区B31': [116.3128, 40.2302],
+                                '小区B32': [116.6349, 39.866],
+                                '小区B33': [116.5848, 40.3849],
+                                '小区B34': [116.4615, 39.9952],
+                                '小区B35': [116.3851, 40.6934],
+                                '小区B36': [116.6271, 40.5142],
+                                '小区B37': [116.266, 40.7417],
+                                '小区B38': [116.3894, 40.6883],
+                                '小区B39': [116.5834, 40.6198],
+                                '小区B40': [116.7483, 39.7207],
+                                '小区B41': [116.7187, 40.6281],
+                                '小区B42': [116.4397, 39.7758],
+                                '小区B43': [116.7469, 39.7432],
+                                '小区B44': [116.6413, 40.4701],
+                                '小区B45': [116.5712, 39.7252],
+                                '小区B46': [116.5342, 40.4835],
+                                '小区B47': [116.7103, 39.8393],
+                                '小区B48': [116.6277, 40.3515],
+                                '小区B49': [116.5889, 40.6449],
+                                '小区B50': [116.6417, 40.6811],
+                                '小区B51': [116.7226, 39.9336],
+                                '小区B52': [116.4416, 40.6886],
+                                '小区B53': [116.6504, 39.9123],
+                                '小区B54': [116.5399, 40.2937],
+                                '小区B55': [116.7321, 40.351],
+                                '小区B56': [116.7399, 39.9499],
+                                '小区B57': [116.4597, 39.714],
+                                '小区B58': [116.6509, 39.8133],
+                                '小区B59': [116.2595, 40.5347],
+                                '小区B60': [116.4569, 40.6677],
+                                '小区B61': [116.2484, 40.6739],
+                                '小区B62': [116.3794, 40.6321],
+                                '小区B63': [116.7485, 40.3136],
+                                '小区B64': [116.2512, 40.6607],
+                                '小区B65': [116.5751, 40.6957],
+                                '小区B66': [116.6681, 40.7217],
+                                '小区B67': [116.5067, 39.9807],
+                                '小区B68': [116.3844, 40.3155],
+                                '小区B69': [116.6222, 40.2551],
+                                '小区B70': [116.6773, 39.6969],
+                                '小区B71': [116.58, 40.2993],
+                                '小区B72': [116.4838, 39.8548],
+                                '小区B73': [116.303, 40.6932],
+                                '小区B74': [116.3904, 39.843],
+                                '小区B75': [116.7118, 39.8538],
+                                '小区B76': [116.4334, 40.0239],
+                                '小区B77': [116.4413, 40.5768],
+                                '小区B78': [116.2496, 40.6082],
+                                '小区B79': [116.7087, 40.2592],
+                                '小区B80': [116.2917, 40.6006],
+                                '小区B81': [116.3362, 40.7509],
+                                '小区B82': [116.5866, 40.3765],
+                                '小区B83': [116.5831, 40.1813],
+                                '小区B84': [116.3556, 40.1084],
+                                '小区B85': [116.4346, 39.9221],
+                                '小区B86': [116.2716, 40.196],
+                                '小区B87': [116.6075, 39.8368],
+                                '小区B88': [116.6028, 40.2624],
+                                '小区B89': [116.6167, 40.0842],
+                                '小区B90': [116.4675, 40.7097],
+                                '小区B91': [116.4047, 39.6643],
+                                '小区B92': [116.504, 39.8727],
+                                '小区B93': [116.4799, 39.7259],
+                                '小区B94': [116.709, 40.1472],
+                                '小区B95': [116.2667, 40.3951],
+                                '小区B96': [116.4764, 39.6867],
+                                '小区B97': [116.3691, 39.8413],
+                                '小区B98': [116.3812, 40.4056],
+                                '小区B99': [116.5373, 40.3339],
+                                '小区B100': [116.4048, 40.0052],
+                                '小区C1': [116.9985, 40.2788],
+                                '小区C2': [117.1417, 40.1252],
+                                '小区C3': [117.1696, 40.4428],
+                                '小区C4': [116.8416, 40.1338],
+                                '小区C5': [117.0006, 40.6666],
+                                '小区C6': [117.0607, 40.6302],
+                                '小区C7': [116.8295, 40.2617],
+                                '小区C8': [116.8109, 40.435],
+                                '小区C9': [116.899, 40.3956],
+                                '小区C10': [116.8919, 40.3198],
+                                '小区C11': [117.054, 40.1732],
+                                '小区C12': [117.0504, 40.4689],
+                                '小区C13': [116.8923, 40.6455],
+                                '小区C14': [117.0954, 40.468],
+                                '小区C15': [116.8187, 40.592],
+                                '小区C16': [116.8819, 40.3058],
+                                '小区C17': [116.8062, 40.3688],
+                                '小区C18': [116.965, 40.1918],
+                                '小区C19': [117.0054, 40.2452],
+                                '小区C20': [117.107, 40.6578],
+                                '小区C21': [116.8767, 40.4925],
+                                '小区C22': [117.0391, 40.1611],
+                                '小区C23': [117.0578, 40.6858],
+                                '小区C24': [116.9542, 40.1446],
+                                '小区C25': [116.8837, 40.4807],
+                                '小区C26': [116.9649, 40.4604],
+                                '小区C27': [116.9245, 40.5145],
+                                '小区C28': [117.0253, 40.4022],
+                                '小区C29': [116.8532, 40.6911],
+                                '小区C30': [116.8439, 40.1163],
+                                '小区C31': [116.8639, 40.4753],
+                                '小区C32': [117.1001, 40.2032],
+                                '小区C33': [116.9824, 40.6794],
+                                '小区C34': [116.8419, 40.559],
+                                '小区C35': [116.9564, 40.3014],
+                                '小区C36': [117.0276, 40.4861],
+                                '小区C37': [117.0355, 40.1737],
+                                '小区C38': [117.0274, 40.4688],
+                                '小区C39': [116.9229, 40.2336],
+                                '小区C40': [117.1311, 40.3608],
+                                '小区C41': [117.0415, 40.3451],
+                                '小区C42': [117.0724, 40.159],
+                                '小区C43': [117.1819, 40.1834],
+                                '小区C44': [116.8946, 40.1611],
+                                '小区C45': [116.8542, 40.2122],
+                                '小区C46': [116.8428, 40.3089],
+                                '小区C47': [117.0398, 40.3624],
+                                '小区C48': [117.1711, 40.1763],
+                                '小区C49': [116.8388, 40.6335],
+                                '小区C50': [117.0144, 40.5612],
+                            },
+                            markPoint: {
+                                symbol: 'emptyCircle',
+                                symbolSize: function (val) {
+                                    if (val < 50) {
+                                        return 4;
+                                    } else if (val >= 50 && val <= 100) {
+                                        return 8;
+                                    } else {
+                                        return 12;
+                                    }
+                                    return 5;
+                                },
+                                effect: {
+                                    show: true,
+                                    type: 'scale'
+                                },
+                                itemStyle: {
+                                    normal: {
+                                        label: {show: false}
+                                    },
+                                    emphasis: {
+                                        borderWidth: 0,
+                                        label: {show: false}
+                                    }
+                                },
+                                data: [
+                                    {name: '马家堡西里小区', value: 95},
+                                    {name: '云智慧小区', value: 95},
+                                    {name: '监控宝小区', value: 95},
+                                    {name: '透视宝小区', value: 95},
+                                    {name: '小区A001', value: 35},
+                                    {name: '小区A002', value: 35},
+                                    {name: '小区A003', value: 35},
+                                    {name: '小区A004', value: 35},
+                                    {name: '小区B001', value: 15},
+                                    {name: '小区B002', value: 15},
+                                    {name: '小区B003', value: 15},
+                                    {name: '小区B004', value: 15},
+                                    {name: '小区C001', value: 55},
+                                    {name: '小区C002', value: 55},
+                                    {name: '小区C003', value: 55},
+                                    {name: '小区C004', value: 55},
+                                    {name: '小区1', value: 35},
+                                    {name: '小区2', value: 35},
+                                    {name: '小区3', value: 35},
+                                    {name: '小区4', value: 35},
+                                    {name: '小区5', value: 35},
+                                    {name: '小区6', value: 35},
+                                    {name: '小区7', value: 35},
+                                    {name: '小区8', value: 35},
+                                    {name: '小区9', value: 35},
+                                    {name: '小区10', value: 35},
+                                    {name: '小区11', value: 35},
+                                    {name: '小区12', value: 35},
+                                    {name: '小区13', value: 35},
+                                    {name: '小区14', value: 35},
+                                    {name: '小区15', value: 35},
+                                    {name: '小区16', value: 35},
+                                    {name: '小区17', value: 35},
+                                    {name: '小区18', value: 35},
+                                    {name: '小区19', value: 35},
+                                    {name: '小区20', value: 35},
+                                    {name: '小区21', value: 35},
+                                    {name: '小区22', value: 35},
+                                    {name: '小区23', value: 35},
+                                    {name: '小区24', value: 35},
+                                    {name: '小区25', value: 35},
+                                    {name: '小区26', value: 35},
+                                    {name: '小区27', value: 35},
+                                    {name: '小区28', value: 35},
+                                    {name: '小区29', value: 35},
+                                    {name: '小区30', value: 35},
+                                    {name: '小区31', value: 35},
+                                    {name: '小区32', value: 35},
+                                    {name: '小区33', value: 35},
+                                    {name: '小区34', value: 35},
+                                    {name: '小区35', value: 35},
+                                    {name: '小区36', value: 35},
+                                    {name: '小区37', value: 35},
+                                    {name: '小区38', value: 35},
+                                    {name: '小区39', value: 35},
+                                    {name: '小区40', value: 35},
+                                    {name: '小区41', value: 35},
+                                    {name: '小区42', value: 35},
+                                    {name: '小区43', value: 35},
+                                    {name: '小区44', value: 35},
+                                    {name: '小区45', value: 35},
+                                    {name: '小区46', value: 35},
+                                    {name: '小区47', value: 35},
+                                    {name: '小区48', value: 35},
+                                    {name: '小区49', value: 35},
+                                    {name: '小区50', value: 35},
+                                    {name: '小区B1', value: 35},
+                                    {name: '小区B2', value: 35},
+                                    {name: '小区B3', value: 35},
+                                    {name: '小区B4', value: 35},
+                                    {name: '小区B5', value: 35},
+                                    {name: '小区B6', value: 35},
+                                    {name: '小区B7', value: 35},
+                                    {name: '小区B8', value: 35},
+                                    {name: '小区B9', value: 35},
+                                    {name: '小区B10', value: 35},
+                                    {name: '小区B11', value: 35},
+                                    {name: '小区B12', value: 35},
+                                    {name: '小区B13', value: 35},
+                                    {name: '小区B14', value: 35},
+                                    {name: '小区B15', value: 35},
+                                    {name: '小区B16', value: 35},
+                                    {name: '小区B17', value: 35},
+                                    {name: '小区B18', value: 35},
+                                    {name: '小区B19', value: 35},
+                                    {name: '小区B20', value: 35},
+                                    {name: '小区B21', value: 35},
+                                    {name: '小区B22', value: 35},
+                                    {name: '小区B23', value: 35},
+                                    {name: '小区B24', value: 35},
+                                    {name: '小区B25', value: 35},
+                                    {name: '小区B26', value: 35},
+                                    {name: '小区B27', value: 35},
+                                    {name: '小区B28', value: 35},
+                                    {name: '小区B29', value: 35},
+                                    {name: '小区B30', value: 35},
+                                    {name: '小区B31', value: 35},
+                                    {name: '小区B32', value: 35},
+                                    {name: '小区B33', value: 35},
+                                    {name: '小区B34', value: 35},
+                                    {name: '小区B35', value: 35},
+                                    {name: '小区B36', value: 35},
+                                    {name: '小区B37', value: 35},
+                                    {name: '小区B38', value: 35},
+                                    {name: '小区B39', value: 35},
+                                    {name: '小区B40', value: 35},
+                                    {name: '小区B41', value: 35},
+                                    {name: '小区B42', value: 35},
+                                    {name: '小区B43', value: 35},
+                                    {name: '小区B44', value: 35},
+                                    {name: '小区B45', value: 35},
+                                    {name: '小区B46', value: 35},
+                                    {name: '小区B47', value: 35},
+                                    {name: '小区B48', value: 35},
+                                    {name: '小区B49', value: 35},
+                                    {name: '小区B50', value: 35},
+                                    {name: '小区B51', value: 35},
+                                    {name: '小区B52', value: 35},
+                                    {name: '小区B53', value: 35},
+                                    {name: '小区B54', value: 35},
+                                    {name: '小区B55', value: 35},
+                                    {name: '小区B56', value: 35},
+                                    {name: '小区B57', value: 35},
+                                    {name: '小区B58', value: 35},
+                                    {name: '小区B59', value: 35},
+                                    {name: '小区B60', value: 35},
+                                    {name: '小区B61', value: 35},
+                                    {name: '小区B62', value: 35},
+                                    {name: '小区B63', value: 35},
+                                    {name: '小区B64', value: 35},
+                                    {name: '小区B65', value: 35},
+                                    {name: '小区B66', value: 35},
+                                    {name: '小区B67', value: 35},
+                                    {name: '小区B68', value: 35},
+                                    {name: '小区B69', value: 35},
+                                    {name: '小区B70', value: 35},
+                                    {name: '小区B71', value: 35},
+                                    {name: '小区B72', value: 35},
+                                    {name: '小区B73', value: 35},
+                                    {name: '小区B74', value: 35},
+                                    {name: '小区B75', value: 35},
+                                    {name: '小区B76', value: 35},
+                                    {name: '小区B77', value: 35},
+                                    {name: '小区B78', value: 35},
+                                    {name: '小区B79', value: 35},
+                                    {name: '小区B80', value: 35},
+                                    {name: '小区B81', value: 35},
+                                    {name: '小区B82', value: 35},
+                                    {name: '小区B83', value: 35},
+                                    {name: '小区B84', value: 35},
+                                    {name: '小区B85', value: 35},
+                                    {name: '小区B86', value: 35},
+                                    {name: '小区B87', value: 35},
+                                    {name: '小区B88', value: 35},
+                                    {name: '小区B89', value: 35},
+                                    {name: '小区B90', value: 35},
+                                    {name: '小区B91', value: 35},
+                                    {name: '小区B92', value: 35},
+                                    {name: '小区B93', value: 35},
+                                    {name: '小区B94', value: 35},
+                                    {name: '小区B95', value: 35},
+                                    {name: '小区B96', value: 35},
+                                    {name: '小区B97', value: 35},
+                                    {name: '小区B98', value: 35},
+                                    {name: '小区B99', value: 35},
+                                    {name: '小区B100', value: 35},
+                                    {name: '小区C1', value: 35},
+                                    {name: '小区C2', value: 35},
+                                    {name: '小区C3', value: 35},
+                                    {name: '小区C4', value: 35},
+                                    {name: '小区C5', value: 35},
+                                    {name: '小区C6', value: 35},
+                                    {name: '小区C7', value: 35},
+                                    {name: '小区C8', value: 35},
+                                    {name: '小区C9', value: 35},
+                                    {name: '小区C10', value: 35},
+                                    {name: '小区C11', value: 35},
+                                    {name: '小区C12', value: 35},
+                                    {name: '小区C13', value: 35},
+                                    {name: '小区C14', value: 35},
+                                    {name: '小区C15', value: 35},
+                                    {name: '小区C16', value: 35},
+                                    {name: '小区C17', value: 35},
+                                    {name: '小区C18', value: 35},
+                                    {name: '小区C19', value: 35},
+                                    {name: '小区C20', value: 35},
+                                    {name: '小区C21', value: 35},
+                                    {name: '小区C22', value: 35},
+                                    {name: '小区C23', value: 35},
+                                    {name: '小区C24', value: 35},
+                                    {name: '小区C25', value: 35},
+                                    {name: '小区C26', value: 35},
+                                    {name: '小区C27', value: 35},
+                                    {name: '小区C28', value: 35},
+                                    {name: '小区C29', value: 35},
+                                    {name: '小区C30', value: 35},
+                                    {name: '小区C31', value: 35},
+                                    {name: '小区C32', value: 35},
+                                    {name: '小区C33', value: 35},
+                                    {name: '小区C34', value: 35},
+                                    {name: '小区C35', value: 35},
+                                    {name: '小区C36', value: 35},
+                                    {name: '小区C37', value: 35},
+                                    {name: '小区C38', value: 35},
+                                    {name: '小区C39', value: 35},
+                                    {name: '小区C40', value: 35},
+                                    {name: '小区C41', value: 35},
+                                    {name: '小区C42', value: 35},
+                                    {name: '小区C43', value: 35},
+                                    {name: '小区C44', value: 110},
+                                    {name: '小区C45', value: 35},
+                                    {name: '小区C46', value: 35},
+                                    {name: '小区C47', value: 110},
+                                    {name: '小区C48', value: 35},
+                                    {name: '小区C49', value: 35},
+                                    {name: '小区C50', value: 110}
+                                ]
+                            }
+                        }
+                    ]
+                };
+
+                myChart.setOption(option);
+
+                document.getElementById('back').addEventListener('click', function () {
+                    option.series[0].mapType = '北京';
+                    myChart.setOption(option, true);
+                    document.getElementById('back').style.display = 'none';
+                });
+
+            }
+    );
+
+</script>
+
+</body>
+</html>

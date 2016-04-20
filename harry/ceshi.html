@@ -16,11 +16,12 @@
         border: 1px solid #eaeaea;
         padding:10px;
     }
+    div { width:50px; height:30px; margin:5px; float:left; background:green; }
+
 </style>
 
 <button id="start">Start</button>
 <button id="stop">Stop</button>
-<div></div><div></div>
 <p>kjdnf</p>
 <p>heidou</p>
 <p><b>Values: </b></p>
@@ -30,8 +31,22 @@
     <input type="text" name="url" value="http://ejohn.org/"/>
 </form>
 
+<p><input type="button" value="Run"/></p>
+<div></div>
+
 <script src="js/jquery.min.js"></script>
 <script>
+
+    $.each({name:'jaon',lang:'js'},function(i,n){
+        alert('name:'+i+',value:'+n)
+    })
+//
+//    jQuery.fx.interval = 100;
+//
+//    $("input").click(function(){
+//        $("div").toggle( 5000 );
+//    });
+
 //    $('p').wrap(function(){
 //        return '<div class="'+$(this).text()+'"/>';
 //    });
@@ -70,35 +85,35 @@
 //    $("p").html("left:"+offset.left+"top:"+offset.top);
 
 
-    (function($) {
-        function styleSupport( prop ) {
-            var vendorProp, supportedProp,
-            // capitalize first character of the prop to test vendor prefix
-                    capProp = prop.charAt(0).toUpperCase() + prop.slice(1),
-                    prefixes = [ "Moz", "Webkit", "O", "ms" ],
-                    div = document.createElement( "div" );
-            if ( prop in div.style ) {
-                // browser supports standard CSS property name
-                supportedProp = prop;
-            } else {
-                // otherwise test support for vendor-prefixed property names
-                for ( var i = 0; i < prefixes.length; i++ ) {
-                    vendorProp = prefixes[i] + capProp;
-                    if ( vendorProp in div.style ) {
-                        supportedProp = vendorProp;
-                        break;
-                    }
-                }
-            }
-            // avoid memory leak in IE
-            div = null;
-            // add property to $.support so it can be accessed elsewhere
-            $.support[ prop ] = supportedProp;
-            return supportedProp;
-        }
-        // call the function, e.g. testing for "border-radius" support:
-        styleSupport( "borderRadius" );
-    })(jQuery);
+//    (function($) {
+//        function styleSupport( prop ) {
+//            var vendorProp, supportedProp,
+//            // capitalize first character of the prop to test vendor prefix
+//                    capProp = prop.charAt(0).toUpperCase() + prop.slice(1),
+//                    prefixes = [ "Moz", "Webkit", "O", "ms" ],
+//                    div = document.createElement( "div" );
+//            if ( prop in div.style ) {
+//                // browser supports standard CSS property name
+//                supportedProp = prop;
+//            } else {
+//                // otherwise test support for vendor-prefixed property names
+//                for ( var i = 0; i < prefixes.length; i++ ) {
+//                    vendorProp = prefixes[i] + capProp;
+//                    if ( vendorProp in div.style ) {
+//                        supportedProp = vendorProp;
+//                        break;
+//                    }
+//                }
+//            }
+//            // avoid memory leak in IE
+//            div = null;
+//            // add property to $.support so it can be accessed elsewhere
+//            $.support[ prop ] = supportedProp;
+//            return supportedProp;
+//        }
+//        // call the function, e.g. testing for "border-radius" support:
+//        styleSupport( "borderRadius" );
+//    })(jQuery);
 
 //    $("#start").click(function () {
 //        $("div").show("slow");
