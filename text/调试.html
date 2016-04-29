@@ -3,81 +3,570 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <!--<link rel="stylesheet" href="css/bootstrap.css"/>-->
+    <link rel="stylesheet" href="css/color/white.css" id="css-conrol"/>
 </head>
 
 <body>
-<button>huhu</button>
 
-<div style="height: 20px;width: 20px;position: absolute;left: 0; background-color: yellowgreen;"></div>
+<style>
+    .tt {
+        background: yellow;
+    }
+
+    .highlight {
+        background-color: Gray;
+    }
+
+    .even {
+        background: red;
+    }
+
+    .odd {
+        background: green;
+
+    }
+    #tuodong{
+        position: absolute;
+        background-color: #eaeaea;
+        width: 100px;
+        height: 100px;
+        padding: 15px;
+        cursor: move;
+        top: 800px;
+        left: 300px;
+    }
+    .tab-min ul{
+        list-style:none ;
+        padding: 0;
+        margin: 0;
+    }
+    .tab-min ul:before,.tab-min ul:after {
+        content: '';
+        display: table;
+    }
+    .tab-min ul:after{
+        clear: both;
+    }
+    .tab-min ul li{
+        float: left;
+        padding: 5px 10px;
+        line-height: 30px;
+        cursor: pointer;
+    }
+    .tab-min ul li.active{
+        background-color: #eaeaea;
+    }
+    .tab-box div{
+        display: none;
+    }
+    .tab-box div.show{
+        display: block;
+    }
+    #color span{
+        width: 22px;
+        height: 22px;
+        display: inline-block;
+        margin-right: 5px;
+        padding: 5px 10px;
+        border: 1px solid #122b40;
+    }
+    #color span.show img{
+        display: block;
+    }
+    #color span img{
+        display: none;
+    }
+    #white{
+        background-color: #ffffff;
+    }
+    #blue{
+        background-color: blue;
+    }
+    #red{
+        background-color: red;
+    }
+    #yellow{
+        background-color: yellow;
+    }
+    
+</style>
+
+<table id="tingting">
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>内容</th>
+        <th>操作</th>
+    </tr>
+    </thead>
+    <tbody id="hh">
+    <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    </tbody>
+</table>
+
+<input type="text" value="name"/>
+<input type="password" value="****"/>
+<input type="button" value="cookie" id="cookie"/>
+
+
+<input type="checkbox" name="names" value="tom"/>tom
+<input type="checkbox" name="names" value="jim"/>jim
+<input type="checkbox" name="names" value="lily"/>lily
+<p id="msgNames"></p>
+
+<select style="float: left; width: 15%; height: 100px" id="select1" multiple="multiple">
+    <option>添加</option>
+    <option>删除</option>
+    <option>修改</option>
+    <option>查询</option>
+    <option>打印</option>
+</select>
+
+<div style="float: left; width: 15%">
+    <input style="float: left; width: 100%;" type="button" id="moveToRight" value=">"/>
+    <input style="float: left; width: 100%;" type="button" id="moveToLeft" value="<"/>
+    <input style="float: left; width: 100%;" type="button" id="AllToRight" value=">>"/>
+    <input style="float: left; width: 100%;" type="button" id="AllToLeft" value="<<"/>
+</div>
+<select style="float: left; width: 15%; height: 100px" id="select2" multiple="multiple">
+</select>
+
+<input type="text" id="txt1"/>+
+<input type="text" id="txt2"/>
+<input type="button" id="eq" value="="/>
+<input type="text" id="txt3"/>
+
+<div id="playlist">
+    <input name="tiem" type="checkbox"/>1111111111<br/>
+    <input name="tiem" type="checkbox"/>22222222222<br/>
+    <input name="tiem" type="checkbox"/>33333333333<br/>
+    <input name="tiem" type="checkbox"/>4444444444<br/>
+    <input name="tiem" type="checkbox"/>444<br/>
+</div>
+<input type="checkbox" value="全选" id="selAll"/>全选
+<input type="button" value="全不选" id="unselAll"/>
+<input type="button" value="反选" id="reverse"/>
+
+<input type="button" id="btnReg" value=""/>
+<ul id="myUL">
+    <li>中国</li>
+    <li>美国</li>
+    <li>日本</li>
+    <li>新加坡</li>
+    <li>意大利</li>
+    <li>法国</li>
+    <li>德国</li>
+</ul>
+<ul id="newUL">
+
+</ul>
+
+<input type="text" value="请输入关键字" id="border"/>
+
+<input name="gender" type="radio" value="男"/>男<br/>
+<input name="gender" type="radio" value="女"/>女<br/>
+<input name="gender" type="radio" value="保密"/>保密<br/>
+<input type="checkbox" value="篮球"/>篮球<br/>
+<input type="checkbox" value="足球"/>足球<br/>
+<input type="checkbox" value="羽毛球"/>羽毛球<br/>
+<input type="checkbox" value="冰球"/>冰球<br/>
+<input type="button" value="设值" id="setValue"/>
+<input type="button" value="取值" id="getValue"/>
+
+
+<table id="t1">
+    <tr id="tr1">
+        <td id="td1">
+            <p id="p1">nihao</p>
+        </td>
+    </tr>
+</table>
+<div id="start" style="position: absolute;">*</div>
+
+<div style="display: none; position: absolute;" id="details">
+    <img id="ditailImg" src="" style="width:200px;height:200px;"/>
+
+    <p id="detailName">
+    </p>
+
+    <p id="detailHeight">
+    </p>
+
+    <p><input id="closeDetails" type="button" value="关闭"/></p>
+
+
+</div>
+<h1 style="margin-left:50px">QQTab效果</h1>
+<ul id="qq" style="width:30%">
+    <li>我的好友</li>
+    <li>mm<br/>baba<br/>mama<br/></li>
+    <li>我的女友<br/></li>
+    <li>gemen<br/></li>
+    <li>陌生人</li>
+    <li>meinv<br/>shuaige<br/></li>
+</ul>
+
+
+
+<div id="tuodong">
+    可以拖拽哦！
+</div>
+
+
+<div id="tab">
+    <div class="tab-min">
+        <ul>
+            <li class="active">1111</li>
+            <li>2222</li>
+            <li>3333</li>
+        </ul>
+    </div>
+    <div class="tab-box">
+        <div class="show">1111</div>
+        <div>2222</div>
+        <div>3333</div>
+    </div>
+</div>
+
+
+<div id="color">
+    <span id="white" class="show"><img src="img/duihao.png" alt=""/></span>
+    <span id="blue"><img src="img/duihao.png" alt=""/></span>
+    <span id="yellow"><img src="img/duihao.png" alt=""/></span>
+    <span id="red"><img src="img/duihao.png" alt=""/></span>
+</div>
+<div>
+    用户名：<input type="text" id="username" value="jenny"/>
+    <input type="checkbox" id="check"/>记住名字
+</div>
+
+<div class="change-img">
+    <img src="star.png" alt=""/>
+</div>
 
 
 </body>
 
 <script src="js/jquery.min.js"></script>
+<script src="js/jquery.cookie.js"></script>
 <script>
-
-    $("button").click(function () {
-        $("div").animate({left:'+=200px'}, 2000);
-        $("div").animate({top:'0px'}, 600);
-        $("div").queue(function () {
-            $(this).toggleClass("red");
-            $(this).clearQueue();
-        });
-        $("div").animate({left:'10px', top:'30px'}, 700);
+    (function($){
+        $('.change-img>img').click(function(){
+            var sttr = $(this).prop('src');
+            var dd = sttr.substring(sttr.lastIndexOf('/'),sttr.indexOf('.'));
+            console.log(dd);
+        })
+    })(jQuery);
+    $(function(){
+        var cookie = 'username';
+        if($.cookie(cookie)){
+            $('#username').val($.cookie(cookie));
+        }
+        $('#check').click(function(){
+            if(this.checked){
+//                cookie = $('#username').val();
+                $.cookie(cookie,$('#username').val())
+            }else{
+                $.cookie(cookie,null);
+            }
+        })
     });
 
 
-    $("div").click(function() {
-        $(this).css({
-            width: function(index, value) {
-                return parseFloat(value) * 1.2;
-            },
-            height: function(index, value) {
-                return parseFloat(value) * 1.2;
+    $(function(){
+        $('#color span').click(function(){
+            var id=$(this).prop('id');
+//            console.log(id);
+            $(this).addClass('show').siblings().removeClass('show');
+            $('#css-conrol').attr('href','css/color/'+id+'.css');
+
+        })
+    });
+
+    $(function(){
+        $('.tab-min>ul>li').click(function(){
+            $(this).addClass('active').siblings().removeClass('active');
+            var count = $('.tab-min>ul>li').index(this);
+            $('.tab-box div').eq(count).addClass('show').siblings().removeClass('show');
+        }).hover(function(){
+            $(this).triggerHandler('click');
+        },function(){
+            $(this).triggerHandler('click');
+        })
+    });
+
+
+    $(function(){
+        var _move = false;
+        var _x,_y;
+        $('#tuodong').click(function(){
+
+        }).mousedown(function(e){
+            var self = $(this);
+            _move = true;
+            _x = e.pageX -parseInt(self.css('left'));
+            _y = e.pageY - parseInt(self.css('top'));
+            self.fadeTo(20, 0.5)
+        });
+        $(document).mousemove(function(e){
+            if(_move){
+                var x = e.pageX-_x;
+                var y = e.pageY-_y;
+                $('#tuodong').css({'left':x,'top':y});
+            }
+        }).mouseup(function(){
+            _move = false;
+            $('#tuodong').fadeTo(20,1);
+        })
+    });
+
+
+
+    var data = {
+        'star.png': ['star.png', 'z', '21'],
+        'star1.png': ['star1.png', 'y', '22'],
+        'ball.png': ['ball.png', 'x', '23']
+    };
+    $.each(data, function (key, value) {
+        var smallPic = $("<img src='" + key + "' style='width:100px;height:100px;'></img>");
+        smallPic.attr("bigPci", value[0]);
+        smallPic.attr("Name", value[1]);
+        smallPic.attr("Height", value[2]);
+        smallPic.mouseover(function (e) {
+            $("#ditailImg").attr("src", $(this).attr("bigPci"));
+            $("#detailName").text("Name:" + $(this).attr("Name"));
+            $("#detailHeight").text("Height:" + $(this).attr("Height"));
+            $("#details").css("left", e.pageX).css("top", e.pageY).css("display", "");
+        });
+        $("body").append(smallPic);
+
+    });
+
+
+
+    $('#cookie').click(function () {
+        $.cookie()
+    });
+
+    $('#qq li:odd').addClass('odd');
+    $('#qq li:even').addClass('even').click(function () {
+        $(this).next('li.odd').show().siblings('li.odd').hide()
+    })
+
+
+    $(function () {
+
+//        $(document).mousemove(function (e) {
+//            $('#start').css({left: e.pageX, top: e.pageY})
+//        });
+
+        $("#tr1").click(function (e) {
+            alert("下面是p的：" + $(this).html() + '' + $(e.target).html());
+
+        });
+        $('#setValue').on('click', function () {
+            console.log($('input[name=gender]:checked').val());
+
+        });
+        $('#getValue').on('click', function () {
+            $("input[name=gender]").val(["女"]);
+            $(":checkbox").val(["篮球", "冰球"]);
+            $(":checkbox[value=羽毛球]").attr("checked", true);
+        });
+
+
+        $('#border').addClass('highlight').focus(function () {
+//        alert('hhh');
+            if ($(this).val() == '请输入关键字') {
+
+                $(this).val('').removeClass('highlight');
+            }
+        }).blur(function () {
+            if ($(this).val() == '') {
+                $(this).val('请输入关键字').addClass('highlight');
             }
         });
+
+
+        //    $('body *').on('click',function(){
+        //       $(this).addClass('highlight').siblings().removeClass('highlight')
+        //    });
+
+        $('#myUL li').mouseover(function () {
+            $(this).css('background', 'red').siblings().css('background', 'white')
+        }).click(function () {
+            $(this).css('background', 'white').appendTo('#newUL');
+        });
+
+        //    $('#newUL li').preventDefault();
+    })
+    var setinster;
+    var stoptime = 3;
+    $(function () {
+        $('#btnReg').prop('disabled', true);
+        setinster = setInterval('stop()', 1000);
+    });
+    function stop() {
+        if (stoptime <= 0) {
+            $('#btnReg').prop('disabled', false);
+            clearInterval(setinster);
+            $('#btnReg').val('同意');
+            return;
+        }
+        stoptime--;
+        $('#btnReg').val('还剩' + stoptime + '秒，请仔细阅读');
+    }
+
+
+    $(function () {
+
+        $('#selAll').on('click', function () {
+            $('#playlist').find('input').prop('checked', true)
+
+        });
+        $('#unselAll').on('click', function () {
+            $('#playlist').find('input').prop('checked', false)
+        });
+        $('#reverse').on('click', function () {
+            $('#playlist').find('input').each(function () {
+                $(this).prop('checked', !$(this).prop('checked'))
+            });
+        });
+        $('input[name=tiem]').click(function(){
+            var flag = true;
+            $('input[name=tiem]').each(function(){
+                if(!this.checked){
+                    flag = false;
+                }
+            });
+            $('#selAll').prop('checked',flag)
+        });
+
+
+        $('#eq').click(function () {
+            var text1 = $('#txt1').val();
+            var text2 = $('#txt2').val();
+            var text3 = parseInt(text1, 10) + parseInt(text2, 10);
+            $('#txt3').val(text3);
+        });
+
+        $('#moveToRight').click(function () {
+//            var item = $('#select1 option:selected').remove();
+            var ti = $('#select1').find('option:selected').remove();
+            ti.attr("selected", false);
+            $("#select2").append(ti);
+        });
+        $('#select1').dblclick(function(){
+            var select = $('option:selected',this)
+            $('#select2').append(select);
+
+        });
+
+        var data = {
+            'data1': 'http://baidu.com', 'data2': 'http://360.com'
+        };
+        $.each(data, function (i, value) {
+
+            var tr = '<tr><td>' + i + '</td><td><a href="' + value + '">' + i + '</a></td></tr>';
+            var aa = $('#hh').append(tr);
+            var bb = aa.remove();
+
+            $(aa).appendTo('#hh');
+        });
+
+        $('input[name=names]').on('click', function () {
+            var namea = $('input[name=names]:checked');
+            var msg = $('#msgNames');
+            var array = new Array();
+            $(namea).each(function (i, value) {
+                array[i] = $(value).val();
+            })
+            msg.text("共选中" + namea.length + "个,他们是：" + array.join(","));
+        });
+
+        $('input[value=peicaiting]').on('click', function () {
+            $(this).css({'border-color': 'red', 'background': 'green'});
+        });
+
+//       $('#tingting').on('click','tr',function(){
+//            $('td',$(this)).css('background','red')
+//       })
     });
 
 
+    //    $("button").click(function () {
+    //        $("div").animate({left: '+=200px'}, 2000);
+    //        $("div").animate({top: '0px'}, 600);
+    //        $("div").queue(function () {
+    //            $(this).toggleClass("red");
+    //            $(this).clearQueue();
+    //        });
+    //        $("div").animate({left: '10px', top: '30px'}, 700);
+    //    });
+    //
+    //
+    //    $("div").click(function () {
+    //        $(this).css({
+    //            width: function (index, value) {
+    //                return parseFloat(value) * 1.2;
+    //            },
+    //            height: function (index, value) {
+    //                return parseFloat(value) * 1.2;
+    //            }
+    //        });
+    //    });
+    //
+    //
+    //    jQuery.fn.extend({
+    //        check: function () {
+    //            return this.each(function () {
+    //                this.checked = 'checked';
+    //            })
+    //        }
+    //
+    //    });
+    //$('input:checkbox').check();
+    //jQuery.extend({
+    //    min:function(a,b){
+    //        return a < b ? a:b;
+    //    },
+    //    max:function(a,b){
+    //        return a > b ? a:b;
+    //    }
+    //});
+    //jQuery.min(2,3);
 
-jQuery.fn.extend({
-    check:function(){
-        return this.each(function(){
-            this.checked = 'checked';
-        })
-    }
 
-});
-$('input:checkbox').check();
-jQuery.extend({
-    min:function(a,b){
-        return a < b ? a:b;
-    },
-    max:function(a,b){
-        return a > b ? a:b;
-    }
-});
-jQuery.min(2,3);
-
-
-
-//    function jLoad(id,url,fn){
-//        $.ajax({
-//            url:url,
-//            dataType:'html',
-//            success: function(result){
-//
-//                id.append(result);
-//
-//                if(fn != undefined){
-//                    fn(result);
-//                }
-//
-//            }
-//
-//        })
-//    }
-//    jLoad($('#a'),'test.html');
+    //    function jLoad(id,url,fn){
+    //        $.ajax({
+    //            url:url,
+    //            dataType:'html',
+    //            success: function(result){
+    //
+    //                id.append(result);
+    //
+    //                if(fn != undefined){
+    //                    fn(result);
+    //                }
+    //
+    //            }
+    //
+    //        })
+    //    }
+    //    jLoad($('#a'),'test.html');
 </script>
 </html>

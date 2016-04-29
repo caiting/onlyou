@@ -2,9 +2,15 @@ var gulp = require('gulp'),
     uglify = require("gulp-uglify"),
     concat = require("gulp-concat"),
     rename = require("gulp-rename"),
-    less   = require("gulp-less");
+    less   = require("gulp-less"),
+    pngquant   = require("imagemin-pngquant"),
+    imgmin = require("gulp-imagemin");
 
-
+gulp.task('imagemin',function(){
+    gulp.src('app/src/img/*')
+        .pipe(imgmin({use: [pngquant()]}))
+        .pipe(gulp.dest('dist/img'));
+});
 gulp.task('concat', function () {
     gulp.src('app/src/js/*.js')//要合并的文件
         .pipe(uglify())
@@ -21,7 +27,7 @@ gulp.task('compile-less', function () {
 });
 
 
-gulp.task('default',['concat','compile-less']);
+gulp.task('default',['concat','compile-less','imagemin']);
 
 
 

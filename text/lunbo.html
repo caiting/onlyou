@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<style>
+    body {
+        overflow-x: hidden;
+    }
+
+    .v_show {
+        width: 600px;
+        overflow: hidden;
+        box-sizing: border-box;
+        position: relative;
+    }
+
+    .content {
+        width: 600px;
+        box-sizing: border-box;
+        height: 150px;
+    }
+
+    .title:before, .title:after, ul:before, ul:after {
+        content: '';
+        display: table;
+    }
+
+    .title:after, ul:after {
+        clear: both;
+    }
+
+    .left, #clcik {
+        float: left;
+    }
+
+    .title > .left span {
+        display: inline-block;
+        width: 5px;
+        height: 5px;
+        border-radius: 5px;
+        background-color: transparent;
+        border: 1px solid #1b6d85;
+        margin-right: 5px;
+        cursor: pointer;
+    }
+
+    .title > .left > .curr {
+        background-color: #1b6d85;
+    }
+
+    #clcik > span {
+        display: inline-block;
+        background-color: #eaeaea;
+        border-radius: 5px;
+        color: #122b40;
+        padding: 3px 20px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .content {
+        padding: 10px;
+    }
+
+    ul {
+        list-style: none;
+        width: 100000px;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        left: 0;
+    }
+
+    ul li {
+        /*width: 100px;*/
+        float: left;
+        padding: 9px;
+    }
+
+    li > img {
+        width: 100px;
+    }
+
+    table {
+        width: 100%;
+        cellspacing: 0;
+        cellspadding: 0;
+        border: 0;
+        /*align:center;*/
+    }
+
+    table th {
+        text-align: left;
+    }
+
+    .odd {
+        background-color: #eaeaea;
+    }
+
+    .selected {
+        background-color: #1b6d85;
+    }
+
+    .ul li {
+        float: inherit;
+        padding: 0;
+    }
+
+    ul.ul {
+        width: inherit;
+        height: 200px;
+        position: inherit;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        list-style: circle;
+        padding: inherit;
+        margin: inherit;
+    }
+
+    #scroll {
+        height: 200px;
+        overflow: hidden;
+    }
+
+    #full-lunbo {
+        width: 100%;
+        height: 200px;
+        background-color: #004444;
+        position: relative;
+    }
+
+    .number {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .number span {
+        display: inline-block;
+        text-align: center;
+        padding: 5px;
+        width: 20px;
+        height: 20px;
+        background-color: #eaeaea;
+        cursor: pointer;
+    }
+
+    .number span.show {
+        background-color: #1b6d85;
+    }
+
+    .photo {
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+    }
+
+    .photo > img.ph_show {
+        display: block;
+    }
+
+    .photo > img {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 200px;
+        display: none;
+    }
+</style>
+<div class="v_show">
+    <div class="title">
+        <div class="left">
+            <span class="curr"></span><span></span><span></span>
+        </div>
+        <div id="clcik">
+            <span class="pre"><</span>
+            <span class="next">></span>
+        </div>
+    </div>
+    <div class="content">
+        <ul>
+            <li><img src="ball.png" alt=""/></li>
+            <li><img src="star.png" alt=""/></li>
+            <li><img src="star1.png" alt=""/></li>
+            <li><img src="ball.png" alt=""/></li>
+            <li><img src="star.png" alt=""/></li>
+            <li><img src="star1.png" alt=""/></li>
+            <li><img src="ball.png" alt=""/></li>
+            <li><img src="star.png" alt=""/></li>
+            <li><img src="star1.png" alt=""/></li>
+            <li><img src="ball.png" alt=""/></li>
+            <li><img src="star.png" alt=""/></li>
+            <li><img src="star1.png" alt=""/></li>
+            <li><img src="ball.png" alt=""/></li>
+        </ul>
+    </div>
+</div>
+
+<div class="color">text</div>
+
+<table id="table">
+    <thead>
+    <tr>
+        <th></th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>暂住地</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><input type="checkbox"/></td>
+        <td>小明</td>
+        <td>男</td>
+        <td>北京</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"/></td>
+        <td>小明</td>
+        <td>男</td>
+        <td>北京</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"/></td>
+        <td>小明</td>
+        <td>男</td>
+        <td>北京</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"/></td>
+        <td>小明</td>
+        <td>男</td>
+        <td>北京</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"/></td>
+        <td>小明</td>
+        <td>男</td>
+        <td>北京</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"/></td>
+        <td>小明</td>
+        <td>男</td>
+        <td>北京</td>
+    </tr>
+    </tbody>
+</table>
+
+
+<div id="full-lunbo">
+    <div class="photo">
+        <img class="ph_show" src="img/22.jpg" alt=""/>
+        <img src="img/11.jpg" alt=""/>
+        <img src="img/22.jpg" alt=""/>
+        <img src="img/11.jpg" alt=""/>
+    </div>
+    <div class="number">
+        <span class="show">1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+    </div>
+</div>
+
+
+<div id="scroll">
+    <ul class="ul" style="list-style: circle">
+        <li>xinwen</li>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+        <li>11</li>
+        <li>12</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+        <li>11</li>
+        <li>12</li>
+    </ul>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script>
+
+    //    jquery插件编写
+    (function ($) {
+        $.fn.extend({
+            'color': function (value) {
+                if (value == undefined) {
+                    return this.css('color')
+                } else {
+                    return this.css({'color': value})
+                }
+            },
+            'alerbgcolor': function (options) {
+                options = $.extend({
+                    'odd': 'odd',
+                    'even': 'even',
+                    'selected': 'selected'
+                }, options);
+                $('tbody>tr:odd', this).addClass(options.odd);
+                $('tbody>tr:even', this).addClass(options.even);
+                $('tbody>tr').click(function () {
+                    var hasselect = $(this).hasClass(options.selected);
+                    $(this)[hasselect ? "removeClass" : "addClass"](options.selected)
+                            .find(":checkbox").prop('checked', !hasselect);
+                    $('tbody>tr:has(:checked)', this).addClass(options.selected);
+                    return this;
+                })
+            }
+        })
+    })(jQuery);
+
+    //测试color插件
+    $(function () {
+        $('#table').alerbgcolor();
+        $('.color').color('blue')
+    });
+    //轮播js代码
+    $(function () {
+        var page = 1;
+        var i = 5;
+        var conten = $('.v_show').find('.content');
+        var list = conten.find('li').length;
+        var count = Math.ceil(list / i);
+        var pages = conten.width();
+        var haha = pages + "px";
+//        console.log(count);
+        $('.next').click(function () {
+
+            if (page == count) {
+                $('ul').css({'left': '0'});
+                page = 1;
+            } else {
+                $('ul').css({'left': '-=' + haha});
+                page++;
+            }
+            ;
+            $('.title').find('.left>span').eq(page - 1).addClass('curr').siblings().removeClass('curr')
+
+        });
+        $('.pre').click(function () {
+            if (page == 1) {
+                $('ul').css({'left': '0'});
+                return false;
+            } else {
+                $('ul').css({'left': '+=' + haha});
+                page--;
+            }
+            ;
+            $('.title').find('.left>span').eq(page - 1).addClass('curr').siblings().removeClass('curr')
+        })
+    })
+
+    //    全屏轮播
+    $(function () {
+        var length = $('.photo img').length;
+        var index = 0;
+        function img_show(){
+            if(index==length){
+                index=0;
+            }else{
+                $('.number span').eq(index).addClass('show').siblings().removeClass('show');
+                $('.photo img').eq(index).addClass('ph_show').siblings().removeClass('ph_show');
+                index++;
+            }
+        }
+        var _insert=setInterval(img_show,1000);
+        $('#full-lunbo').hover(function(){
+//            console.log('hhh');
+            clearInterval(_insert);
+        },function(){
+            _insert=setInterval(img_show,1000);
+        });
+
+    })
+
+    $(function(){
+        var $this = $('#scroll');
+        var scrollTimer=setInterval(scroll,1000);
+        $this.hover(function(){
+            clearInterval(scrollTimer)
+        },function(){
+            scrollTimer = setInterval(scroll,1000)
+        });
+        function scroll(){
+            var selfs = $this.find('.ul');
+            var length = selfs.find('li:first').height();
+            selfs.animate({
+                'margin-top':-length +'px'
+            },600,function(){
+                selfs.css({'margin-top':0}).find('li:first').appendTo(selfs)
+            })
+        }
+    });
+
+
+
+//    $(function() {
+//        var $this = $("#scroll");
+//        var scrollTimer;
+//        $this.hover(function() {
+//            clearInterval(scrollTimer);
+//        }, function() {
+//            scrollTimer = setInterval(function() {
+//                scrollNews($this);
+//            }, 1000);
+//        }).trigger("mouseleave");
+//
+//        function scrollNews(obj) {
+//            var $self = obj.find(".ul");
+//            var lineHeight = $self.find("li:first").height();
+//            $self.animate({
+//                "margin-top": -lineHeight + "px"
+//            }, 600, function() {
+//                $self.css({
+//                    'margin-top': 0
+//                }).find("li:first").appendTo($self);
+//            })
+//        }
+//    });
+
+
+
+</script>
+</body>
+</html>

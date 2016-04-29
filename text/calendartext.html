@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--
+PS：简单解释一下，蔡勒公式：var week = y + parseInt(y/4) + parseInt(c/4) - 2*c + parseInt(26*(m+1)/10) + d - 1;
+c是年份的前两位，y是年份的后两份（2016年，c是20，y就是16）,m是月份,d是日期，把week%7后得出的结果就是星期几
+但是1,2月要当成上一年的13,14月进行计算，比如2016.2.3，就要换算成2015.14.3来使用蔡勒公式
+week是正数和负数时求模是不一样的，负数时要 (week%7+7)%7，正数时直接求模 week%7，
+还有得知道这个月份有多少天，1、3、5、7、8、10、12月是31天，4、6、9、11月是30天，2月分闰年和平年，平年是28天，闰年是29天，闰年是能被4整除但不能被100整除的，
+-->
+<style>
+    .container{
+        width: 250px;
+    }
+    table{
+        width: 100%;
+    }
+    td {
+        border: 1px solid #eaeaea;
+    }
+
+    table > tbody > tr > td, table > thead > tr > th {
+        padding: 5px;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+    }
+    table>thead .sun,table>thead .sta{
+        color:#bf6a40;
+    }
+    .left{
+        float: left;
+    }
+    .right{
+        float: right;
+    }
+    .cal-control-box:before,.cal-control-box:after{
+        content: '';
+        display: table;
+    }
+    .cal-control-box:after{
+        clear: both;
+    }
+    .text-center{
+        float: left;
+    }
+</style>
+<div class="container">
+    <input type="text" id="cal-input"/>
+
+    <div class="cal-box">
+        <div class="cal-control-box">
+            <div class="wif-yy left"><<~~</div>
+            <div class="wif-mm left"><</div>
+            <div class="text-center">
+                <input type="text" class="cal-year" value="" size="5"/>
+                <span>年</span>
+                <input type="text" value="" class="cal-month" size="5"/>
+            </div>
+
+            <div class="wif-yy right">>></div>
+            <div class="wif-mm right">>~~</div>
+        </div>
+
+        <table cellpadding="1" cellspacing="1">
+            <thead>
+            <tr>
+                <th class="sun">日</th>
+                <th>一</th>
+                <th>二</th>
+                <th>三</th>
+                <th>四</th>
+                <th>五</th>
+                <th class="sta">六</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script>
+    $(function(){
+        var $td = $('tbody').find('td');
+        var data = new Date(),
+                year = data.getFullYear(),
+                month = data.getMonth()+ 1,
+                day = data.getDate(),
+                days;
+        function initCal(yy,mm,dd){
+            if(mm==2 && yy%4==0 && yy%100 !==0){
+                days=28;
+            }else if(mm==1 || mm==3 || mm==5 || mm==7 || mm==8 || mm==10 || mm==12){
+                days = 31;
+            }else if(mm==4 || mm==6 || mm==9 || mm==11){
+                days = 30;
+            }else{
+                days = 29;
+            }
+            var week = dd;
+            week = week <0 ? (week%7+7)%7 :week%7;
+            for(var i=0;i<42;i++){
+                $td.eq(i).text('');
+            }
+            for(var i =0;i<days;i++){
+                $td.eq(week % 7+i).text(i+1);
+            }
+
+        }
+        initCal(year,month,day);
+        $('input.cal-year').val(year);
+        $('input.cal-month').val(month);
+//        $(document).on('click','.wif-mm',function(){
+//            if($(this).hasClass('left')){
+//                if(month==1){
+//                    month=12;
+//                    year--;
+//                }else{
+//                    month--;
+//                }
+//            }else{
+//                if(month==12){
+//                    month=1;
+//                    year++;
+//                }else{
+//                    month++;
+//                }
+//            }
+//            $('input.cal-month').val(month);
+//            initCal(year,month,day);
+//        });
+//        $('input.cal-year').val(year);
+//        $('input.cal-month').val(month);
+//        $(document).on('click','.wif-yy',function(){
+//            if($(this).hasClass('left')){
+//                year--;
+//            }else{
+//                year++;
+//            }
+//            $('input.cal-year').val(year);
+//            initCal(year,month,day);
+//        })
+//        $(document).on('change', 'input.cal-year', function () {
+//            year = $(this).val();
+//            initCal(year, month, day);
+//        });
+//        $(document).on('change','input.cal-month',function(){
+//            month = $(this).val();
+//            initCal(year,month,day);
+//        })
+    })
+</script>
+</body>
+</html>
