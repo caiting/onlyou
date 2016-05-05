@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../bower_components/react/react.min.js"></script>
+    <script src="../bower_components/react/react-dom.min.js"></script>
+    <script src="js/browser.min.js"></script>
+</head>
+<body>
+<style>
+
+</style>
+<div id="content">
+
+</div>
+<div>
+    <ul id="add">
+        <li></li>
+    </ul>
+</div>
+<input type="text" id="text" value=""/>
+<input type="button" id="obtain" value="添加#2"/>
+
+
+<div class="clone">
+    <textarea id="title">
+
+    </textarea>
+    <div class="content" >
+
+    </div>
+</div>
+
+<script src="../harry/js/jquery.min.js"></script>
+
+
+<script>
+
+//    var title = $("b.facility");
+
+
+
+    $(function(){
+//        onpropertychange
+        $('#title').bind('input', function () {
+            var counter = $('#title').val();
+            $('.content').text(counter);
+        });
+
+    });
+    $('#obtain').on('click',function(){
+        var text = $('#text').val();
+        $('<li>'+text+'</li>').appendTo('#add');
+        var length = $('#add>li').length;
+        var len = length +1;
+        $('#obtain').val('添加#'+len);
+        $('#text').val('');
+    });
+
+    var jing = {
+        interval: undefined,
+        i :0,
+        add:function(){
+            this.i++;
+            this.judge();
+            $('#content').append(this.i);
+        },
+        setIN:function(){
+            this.interval = setInterval(function(){
+                jing.add();
+            },1000)
+        },
+        judge:function(){
+            if(this.i>5){
+                clearInterval(this.interval);
+            }
+        }
+
+    };
+    jing.setIN();
+</script>
+
+</body>
+</html>
