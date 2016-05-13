@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function displayInfo(args){
+        var output = "";
+        if(typeof  args.name == "string"){
+            output += "Name" + args.name + "/n"
+        }
+        if(typeof args.age== "number"){
+            output +="age" + args.age +"/n";
+        }
+        alert(output);
+    }
+//    displayInfo({
+//        name:"harry",
+//        age:25
+//    });
+//    displayInfo({
+//        name:"jenny"
+//    });
+
+    function People(name){
+        this.name = name;
+        this.Introduce = function(){
+            alert('my name is'+this.name);
+        }
+    }
+    People.Run = function(){
+        alert('i can run');
+    };
+    People.prototype.IntroduceChinese = function(){
+        alert('我的名字是'+ this.name);
+    };
+    var p1 =new People("jenny");
+    p1.Introduce();
+    People.Run();
+    p1.IntroduceChinese();
+
+
+
+    function fn(name){
+        if(typeof name === "string"){
+            var args = Array.prototype.slice.call( arguments, 1 );
+            for(var i=0;i<args.length;i++){
+                alert(args[i]);//结果: 111 222
+            }
+        }
+    }
+    function callFn(){
+        fn("test",111,222);
+    }
+    callFn();
+
+    /*增加一个全局函数  jquery插件讲解*/
+
+    jQuery.sayHello = function(name){
+        alert('nihao'+name);
+    }
+    $.sayHello('harry');
+
+    /*增加多个全局函数*/
+    jQuery.extend({
+        sayHello:function(name){alert('nihao'+name);},
+        sayBye:function(name){alert('再见'+name)}
+    })
+    $.sayBye('huhu');
+    /*命名空间*/
+    jQuery.wq = {
+        sayHello:function(name){alert('nihao'+name);},
+        sayBye:function(name){alert('再见'+name)}
+    }
+    $.wq.sayBye('harry');//jQuery.wq.sayBye('harry')
+    /*为jQuery实例对象创建新方法*/
+    jQuery.fn.sayHello = function(){
+        alert('nihao')
+    }
+    $('div').sayHello();
+    /*一次定义多个方法*/
+    jQuery.fn.extend({
+        sayHello:function(){alert('hello')},
+        sayBye:function(){alert('bye')}
+    });
+    $('div').sayBye();
+    jQuery.fn.sayHello = function(properties){
+        var defaults  = {
+            name:'harry',
+            age:25
+        };
+        jQuery.extend(defaults,properties);
+        alert('第一个参数'+defaults.name+'第二个参数'+defaults.age);
+        return this;
+    }
+    $('div').sayHello({
+        name:'harry',
+        age:24
+    })
+</script>
+</body>
+</html>

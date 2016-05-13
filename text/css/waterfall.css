@@ -1,0 +1,27 @@
+
+*{
+    padding:0;
+    margin: 0;
+}
+#main{
+    position: relative;
+}
+.box{
+    padding-bottom: 15px;
+    padding-left: 15px;
+    float: left;
+}
+.pic{
+    padding: 10px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #eaeaea;
+    -webkit-box-shadow: 0 0 15px #ccc;
+    -moz-box-shadow: 0 0 15px #ccc;
+    box-shadow: 0 0 15px #ccc;
+}
+.pic img{
+    width: 165px;
+    height: auto;
+}

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    #content {
+        position: relative;
+        left: -200px;
+        width: 200px;
+        height: 200px;
+        background-color: red;
+    }
+
+    #shar {
+        width: 20px;
+        height: 50px;
+        position: absolute;
+        top: 80px;
+        right: -20px;
+        color: #ffffff;
+        background-color: blue;
+    }
+    #ul_li ul{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    #ul_li ul li {
+        background-color: #004444;
+        width: 200px;
+        height: 100px;
+        margin-top: 15px;
+    }
+    #div div{
+        background-color: #004444;
+        width: 100px;
+        height: 100px;
+        margin-top: 15px;
+        margin-right: 15px;
+        filter: alpha(opacity=30);
+        opacity: 0.3;
+        float: left;
+    }
+</style>
+<div id="content">
+    <div id="shar">分享</div>
+</div>
+<div id="aa" style="background-color: red;width: 100px;height: 100px;filter:alpha(opacity=30);opacity: 0.3"></div>
+<div id="ul_li">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<div id="div">
+    <div></div>
+    <div></div>
+    <div></div>
+
+</div>
+
+<script>
+    var content = document.getElementById('content');
+    var aa = document.getElementById('aa');
+    var li = document.getElementsByTagName('li');
+    var div = document.getElementById('div');
+    var op = div.getElementsByTagName('div');
+    var opci;
+//    alert(op);
+    window.onload = function () {
+        for(var i = 0;i<op.length;i++){
+            op[i].opci=30;
+            op[i].onmouseover = function(){
+//                this.opci=30;
+                distinct(this,100);
+            };
+            op[i].onmouseout = function(){
+                distinct(this,30);
+            }
+        }
+        for(var i = 0;i<li.length;i++){
+            li[i].onmouseover = function(){
+
+                move(this,400);
+            };
+            li[i].onmouseout = function(){
+                move(this,200);
+            }
+        }
+        aa.onmouseover = function(){
+            color_move(100);
+        };
+        aa.onmouseout = function(){
+            color_move(30);
+        };
+        content.onmouseover = function () {
+            mouseover(0);
+        };
+        content.onmouseout = function () {
+            mouseover(-200);
+        };
+    };
+    function distinct(obj,target){
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function(){
+            if(target<=30){
+                speed = -10;
+            }else{
+                speed = 10;
+            }
+            if(obj.opci==target){
+                clearInterval(obj.timer);
+            }else{
+                obj.opci+=speed;
+                obj.style.filter = 'alpha(opacity='+obj.opci+')';
+                obj.style.opacity = obj.opci/100;
+            }
+        },30)
+    }
+    function move(obj,target){
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function(){
+            speed = (target - obj.offsetWidth)/10;
+            if(obj.offsetWidth==target){
+                clearInterval(obj.timer);
+            }else{
+                obj.style.width = obj.offsetWidth +speed +'px'
+            }
+        },30)
+    }
+    var timer;
+    var speed;
+    var opci =30;
+    function mouseover(target){
+        clearInterval(timer);
+        timer = setInterval(function(){
+            speed = (target-content.offsetLeft)/10;
+            speed=speed > 0?Math.ceil(speed):Math.floor(speed);
+            if(content.offsetLeft==target){
+                clearInterval(timer);
+            }else{
+                content.style.left=content.offsetLeft+speed+'px';
+            }
+        },30)
+    }
+    function color_move(target){
+        clearInterval(timer);
+        timer = setInterval(function(){
+            if(target<=30){
+                speed = -10;
+            }else{
+                speed = 10;
+            }
+            if(opci==target){
+                clearInterval(timer);
+            }else{
+                opci+=speed;
+                aa.style.filter = 'alpha(opacity='+opci+')';
+                aa.style.opacity = opci/100;
+            }
+        },30)
+    }
+    /*
+
+
+     var obj = {
+     aa:undefined, bb:0,
+     cc:function(){
+     if(this.bb>5){
+     clearInterval(this.aa);
+     }
+     },
+     add:function(){
+     this.bb++;
+     this.cc();
+     console.log(this.bb);
+     },
+     dd:function(){
+     this.aa = setInterval(function(){
+     obj.add();
+     },1000)
+     }
+     };
+
+     var aa = document.getElementById('aa');
+     aa.onmouseover = function(){
+     aa_color(100);
+     };
+     aa.onmouseout = function(){
+     aa_color(30);
+     };
+     function aa_color(target){
+     var speed=10;
+     var alpha =30;
+     if(alpha<=target){
+     speed=10;
+     }else{
+     speed=-10;
+     }
+     var hh = setInterval(function(){
+     if(alpha<=target){
+     alpha +=speed;
+     aa.style.filter = 'alpha(opacity:'+alpha+')';
+     aa.style.opacity = alpha/100;
+     }else{
+     clearInterval(hh);
+     }
+     },30)
+
+     }
+
+
+     var Div = document.getElementById('content');
+
+     var timer = null;
+
+     Div.onmouseover = function(){
+     mouseover(0);
+     };
+     Div.onmouseout = function(){
+     mouseover(-200)
+     };
+
+     function mouseover(target){
+     clearInterval(timer);
+     timer =  setInterval(function(){
+     var speed;
+     if(target>=0){
+     speed=10;
+     }else{
+     speed=-10;
+     }
+     if(Div.offsetLeft == target){
+     clearInterval(timer);
+     }else{
+     Div.style.left = Div.offsetLeft+speed+'px';
+     }
+     },30)
+     }
+
+
+     function Move(){
+     clearTimeout(timer);
+     if(Div.offsetLeft < 0 ){
+     Div.style.left = Div.offsetLeft+10+'px';
+     timer = setTimeout('Move()',30);
+     }
+     }
+     function MoveOut(){
+     clearTimeout(timer);
+     if(Div.offsetLeft > -200){
+     Div.style.left = Div.offsetLeft-10+'px';
+     timer = setTimeout('MoveOut()',30);
+     }
+     }*/
+    var harry = [[1,2],[3,4,5],[6,7,8,9]];
+    var i=0,j=0;
+    for(;i<harry.length;i++){
+
+//        console.log('row'+i);
+        for(j=0;j<harry[i].length;j++){
+//            console.log(harry[i][j]);
+        }
+    }
+
+    /*document.body.innerHTML='<div id="div1">aaa</div>'+'<div id="div2">bbb</div>'+'<div id="div3">ccc</div>';
+
+    for(var i = 1;i<4;i++){
+        !function(i){
+            document.getElementById('div'+i).addEventListener('click',function(){
+                alert(i);
+            });
+        }(i)
+
+    }*/
+
+    var a = [1,2,3,4];
+//    for(var i = 0;i< a.length;i++){
+//        console.log(a[i]);
+//    }
+
+    Array.prototype.x='r';
+    for(var key in a){
+        if(a.hasOwnProperty(key))
+        console.log(a[key]);
+    }
+
+</script>
+</body>
+</html>
