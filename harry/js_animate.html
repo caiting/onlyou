@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    ul{
+        list-style: none;
+    }
+    li{
+        width: 200px;
+        height: 100px;
+        background-color: #0a9dbc;
+        margin-bottom: 15px;
+    }
+</style>
+<div>
+    <ul id="ul">
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<input type='text' id='txt1' />
+<select id='select'>
+    <option value='+'>+</option>
+    <option value="-">-</option>
+    <option value="*">*</option>
+    <option value="/">/</option>
+</select>
+<input type='text' id='txt2' />
+<input type='button' value=' = ' onclick='count()' /> <!--通过 = 按钮来调用创建的函数，得到结果-->
+<input type='text'  id='fruit'/>
+
+
+<input type="text" id="clock" size="50"  />
+<input type="button" value="Stop" onclick='clearInterval(tim)'  />
+<input type="text" id="count" />
+
+
+
+
+<div>
+    <h3>操作成功</h3>
+    <span id="time"></span>秒返回主页
+    <a>返回</a>
+</div>
+
+<input type="button" value="按钮" id="btn3"/>
+<script>
+    function showmenu(){
+        alert('jenny come on!');
+    }
+    var btn3 = document.getElementById('btn3');
+    btn3.addEventListener('click',showmenu,false);
+
+
+
+
+    var ss=5;
+    var jishi = document.getElementById('time');
+
+    var time = setInterval(function(){
+        jishi.innerText=ss;
+        if(ss==0){
+            clearInterval(time);
+            window.history.back();
+        }else{
+            ss--;
+        }
+
+    },1000);
+
+    var num=0;
+    function startCount() {
+        document.getElementById('count').value=num;
+        num++;
+         setTimeout(startCount,1000)
+    }
+    startCount();
+
+
+    function clock(){
+        var time=new Date();
+        document.getElementById("clock").value = time;
+    }
+    var tim = setInterval(clock,100);
+
+
+    var hh = [];
+    var harr = ["小明:87", "小花:81", "小红:97", "小天:76", "小张:74", "小小:94", "小西:90", "小伍:76", "小迪:64", "小曼:76"]
+    for(var i=0;i<harr.length;i++){
+        var d=parseInt(harr[i].substr(3));
+        hh.push(d);
+    }
+    console.log(hh);
+        hh.reduce(function(a,b){
+            return a+b ;
+    });
+
+
+
+
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth()+1;
+    var day = date.getDay();
+    var hours = date.getHours();
+    var m = date.getMinutes();
+    var seconds = date.getSeconds();
+
+    document.write(m);
+    var input3;
+    function count(){
+        var input1 = parseInt(document.getElementById('txt1').value);
+        console.log(input1);
+
+        //获取第一个输入框的值
+        var input2=parseInt(document.getElementById('txt2').value);
+        console.log(input2);
+        //获取第二个输入框的值
+        var select = document.getElementById('select').value;
+        console.log(select);
+        document.getElementById('fruit').value=input3;
+
+        switch(select){
+            case '+':
+                input3=parseInt(input1+input2);
+                break;
+            case '-':
+                input3=parseInt(input1-input2);
+                break;
+            case '*':
+                input3=parseInt(input1*input2);
+                break;
+            case '/':
+                input3=parseInt(input1/input2);
+                break;
+        }
+
+
+        //获取选择框的值
+        //获取通过下拉框来选择的值来改变加减乘除的运算法则
+        //设置结果输入框的值
+
+    }
+
+
+    var infos = [['小A','女',21,'大一'],['小b','女',21,'大er'],['小d','女',21,'大er'],['小c','女',21,'大一']] ;
+    for(var i=0;i<infos.length;i++){
+        for(var j=0;j<infos[i].length;j++){
+            if(infos[i][j]=='大一'){
+                console.log(infos[i]);
+            }
+        }
+    };
+
+
+    var ul = document.getElementById('ul');
+    var li = ul.getElementsByTagName('li');
+    window.onload = function(){
+        var a =li[0].style.width;
+        console.log(a);
+
+        for(var i = 0;i<li.length;i++){
+            li[i].timer = null;
+            li[i].onmouseover = function(){
+                aa(this,10,400);
+            };
+            li[i].onmouseout = function(){
+                aa(this,-10,200);
+            }
+        }
+    };
+    var time;
+function aa(lis,speed,val){
+
+    clearInterval(lis.timer);
+    lis.timer = setInterval(function(){
+        var width = lis.offsetWidth;
+        if(width==val){
+            clearInterval(time);
+        }else{
+            lis.style.width = width+speed+'px';
+        }
+    },30)
+}
+</script>
+</body>
+</html>

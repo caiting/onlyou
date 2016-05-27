@@ -1,0 +1,35 @@
+[
+  {
+    "depri":"用户接口注册",
+    "UPL":"http://xx.com/api/user/register",
+    "way":"POST",
+    "date":[
+      {
+        "name":"username",
+        "choose":"是",
+        "type":"string",
+        "explain":"用户名"
+      },
+      {
+        "name":"password",
+        "choose":"是",
+        "type":"string",
+        "explain":"密码"
+      },
+      {
+        "name":"name",
+        "choose":"否",
+        "type":"string",
+        "explain":"昵称"
+      }
+    ],
+    "返回示例":"",
+    "parameter":[
+      {
+        "name":"groupid",
+        "type":"int",
+        "explain":"用户组id，1：超级管理员；2：普通用户"
+      }
+    ]
+  }
+]
