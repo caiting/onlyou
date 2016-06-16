@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../react/bower_components/react/react.min.js"></script>
+    <script src="../react/bower_components/react/react-dom.min.js"></script>
+    <script src="../react/node_modules/babel-core/browser.min.js"></script>
+    <script src="../harry/js/jquery.min.js"></script>
+</head>
+<body>
+<style>
+    .select {
+        background-color: #bf6a40;
+    }
+</style>
+<div id="select"></div>
+<script src="tab.js" type="text/babel"></script>
+<!--<script>
+    var date = [
+        {"name": "Red", "value": "red"},
+        {"name": "Blue", "value": "blue"},
+        {"name": "Yellow", "value": "yellow"},
+        {"name": "Orange", "value": "orange"}
+    ];
+    $.fn.tabSelect = function (obtion) {
+        var arr = ["<div class='tab-selector'>"];
+        arr.push("<label>" + obtion.label + "</label>");
+        arr.push("<ul>");
+        obtion.date.forEach(function (item) {
+            arr.push("<li date-value='" + item.value + "'>");
+            arr.push(item.name);
+            arr.push("</li>");
+        })
+        arr.push("</ul></div>");
+        this.html(arr.join(""));
+        var lastSelect = null;
+        this.on("click", "li", function () {
+            var $this = $(this);
+            if (lastSelect) {
+                lastSelect.removeClass('select');
+            }
+            $this.addClass('select');
+            lastSelect = $this;
+
+        })
+        return this;
+    }
+    $('#select').tabSelect({date: date, selected: null, label: 'color'})
+
+</script>-->
+</body>
+
+</html>

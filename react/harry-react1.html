@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="css/harry-react1.css"/>
-    <script src="../bower_components/react/react.min.js"></script>
-    <script src="../bower_components/react/react-dom.min.js"></script>
-    <script src="js/browser.min.js"></script>
-    <script src="js/jquery.min.js"></script>
+    <!--<script src="../node_modules/requirejs/require.js" data-main="js/main"></script>-->
+    <script src="bower_components/react/react.min.js"></script>
+    <script src="bower_components/react/react-dom.min.js"></script>
+
 </head>
 <body>
 <div id="title">
@@ -22,7 +22,11 @@
 
     </div>
 </div>
-
-<script src="js/harry-react1.js" type="text/babel"></script>
+<script src="node_modules/babel-core/browser.min.js"></script>
+<script src="node_modules/babel-core/browser.min.js"></script>
+<script src="js/lib/jquery.min.js"></script>
+<script src="js/main-left.js" type="text/babel"></script>
+<script src="js/harry-react-title.js" type="text/babel"></script>
+<script src="js/register.js" type="text/babel"></script>
 </body>
 </html>

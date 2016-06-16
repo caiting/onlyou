@@ -1,0 +1,22 @@
+{
+  "name": "react",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "tt <jenny.pei@yunzhihui.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/caiting/onlyou",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "^15.1.0"
+  }
+}

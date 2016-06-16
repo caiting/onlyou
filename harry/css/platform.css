@@ -1,0 +1,46 @@
+body{
+    background-color: #333333;
+}
+.navbar-black{
+    background-color: #292929;
+}
+.navbar{
+    min-height: 60px;
+}
+.singup>.dropdown>a{
+    color: #ffffff;
+    text-decoration: none;
+    padding-top: 20px;
+    display: block;
+}
+.singup .open > .dropdown-menu{
+    background-color: #5a5959;
+}
+.singup .dropdown-menu{
+    min-width: 100px;
+}
+.singup .dropdown-menu > li{
+    padding: 15px 0;
+    background-color: #ffffff;
+}
+.singup .dropdown-menu > li > a{
+    padding-top: 7px;
+    padding-bottom: 7px;
+    background-color: #e8e8e8;
+}
+
+
+
+.pla-main{
+    margin-top: 60px;
+}
+.pla-main img{
+    width: 100%;
+    max-width: 399px;
+ }
+
+
+
+
+
+
