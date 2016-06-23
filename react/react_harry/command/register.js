@@ -2,23 +2,25 @@
  * Created by tt on 16/5/30.
  */
 
+import React from 'react';
+import ReactDOM from 'react-dom';
 
+var HarryStyle =require('./harry-react1.css');
 var Table = React.createClass({
     render: function () {
-
         var repos = this.props.parameter;
         var head = this.props.header;
-        var header = head.map(function (head) {
+        var header = head.map(function (head,i) {
             return (
-                <th>{head.title}</th>
+                <th key={i}>{head.title}</th>
             )
         });
         var repoList = repos.map(function (repo, index) {
             return (
-                <tr>
+                <tr key={index}>
                 {
                     head.map(function (val, i) {
-                        return (<td>{repo[val.field]}</td>);
+                        return (<td  key={i}>{repo[val.field]}</td>);
                     })
                 }
                 </tr>);

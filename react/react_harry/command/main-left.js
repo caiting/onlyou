@@ -1,6 +1,10 @@
 /**
  * Created by tt on 16/6/12.
  */
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+var HarryStyle =require('./harry-react1.css');
 var arr = [
     {
         "title": "序言"
@@ -31,7 +35,7 @@ var Li = React.createClass({
                 {
                     arr.map(function (val, i) {
                         return (
-                            <LiO val={val} opens={(this.state.index==i)} hideOther={this.hideOther} isOpen={!!val.files} index={i}/>
+                            <LiO key={i} val={val} opens={(this.state.index==i)} hideOther={this.hideOther} isOpen={!!val.files} index={i}/>
                         )
                     }.bind(this))
                 }
@@ -68,8 +72,8 @@ var Ul = React.createClass({
         var files = this.props.list;
         var list = [];
         if (files instanceof Array) {
-            list = files.map(function (name) {
-                return <li><a href="javascript:;">{name}</a></li>
+            list = files.map(function (name,i) {
+                return <li key={i}><a href="javascript:;">{name}</a></li>
             })
         }
         return (

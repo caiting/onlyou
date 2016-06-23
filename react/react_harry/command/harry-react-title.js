@@ -1,7 +1,10 @@
 /**
  * Created by tt on 16/5/25.
  */
+import React from 'react';
+import ReactDOM from 'react-dom';
 
+var HarryStyle =require('./harry-react1.css');
 var Title = React.createClass({
     getInitialState: function () {
         return {

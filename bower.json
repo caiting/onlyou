@@ -1,0 +1,22 @@
+{
+  "name": "onlyou",
+  "homepage": "https://github.com/caiting/onlyou",
+  "authors": [
+    "tt <jenny.pei@yunzhihui.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "^15.1.0"
+  }
+}

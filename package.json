@@ -1,0 +1,28 @@
+{
+  "name": "onlyou",
+  "version": "1.0.0",
+  "description": "onlyou",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "jsx": "^0.9.89",
+    "requirejs": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.9.1",
+    "babel-loader": "^6.2.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caiting/onlyou.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caiting/onlyou/issues"
+  },
+  "homepage": "https://github.com/caiting/onlyou#readme"
+}

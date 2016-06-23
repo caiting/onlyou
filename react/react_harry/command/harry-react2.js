@@ -1,6 +1,10 @@
 /**
  * Created by tt on 16/6/2.
  */
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+var HarryStyle =require('./harry-react1.css');
 var date = [
     {
         "title": "新浪微博",
@@ -16,9 +20,9 @@ var Square = React.createClass({
         return (
             <ul className="block">
                 {
-                    date.map(function (val) {
+                    date.map(function (val,i) {
                         return (
-                            <li>
+                            <li key={i}>
                                 <a href="./harry-react1.html">
                                     <h2>{val.title}</h2>
                                     <div>{val.content}</div>
